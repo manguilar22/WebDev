@@ -10,6 +10,7 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8080:80"
+
   mysqlDB:
     container_name: php-db
     image: mysql:5.7
@@ -17,4 +18,4 @@ services:
       MYSQL_ROOT_PASSWORD: utep
       MYSQL_USER: user
       MYSQL_PASSWORD: utep
-      MYSQL_DATABASE: sample
+      MYSQL_DATABASE: utep
