@@ -27,7 +27,7 @@
         <input type="text" name="secondName" placeholder="Type something here"/>
         <input type="submit" value="Submit"/>
     </form>
-
+	
 </body>
 
 <!-- Javascript -->
