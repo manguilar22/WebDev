@@ -1,0 +1,21 @@
+.studentForm form {
+
+}
+
+.studentForm input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+.studentForm  input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+.studentForm input[type=text]:focus {
+    border: 3px solid #555;
+}
