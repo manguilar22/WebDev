@@ -28,7 +28,7 @@
         <input type="text" name="overallGPA" placeholder="Overall GPA"/> <br/>
         <label>Password</label> <br/>
         <input type="password" name="password" placeholder="type a secret password"/><br/>
-        <button type="submit">Create Account</button>
+        <input name='submit' type="submit" value="Create Account"/>
     </form>
     </div>
 
@@ -50,20 +50,31 @@
 
         $password = $_POST["password"];
 
-        // Data too long for column 'Spassword' at row 1
-        //$password = password_hash($_POST["password"],PASSWORD_DEFAULT);
-
-    $sql = "INSERT INTO Student VALUES ('$fName','$mName','$lName','$uEmail','$class','$majorGPA','$overallGPA','$password') ";
-
-    $testQuery = "SELECT COUNT(*) FROM Student WHERE Semail LIKE 'aass' ";
-
-    $count = $db -> query($testQuery)->fetch_array()[0]; // HACKY
+    // Data too long for column 'Spassword' at row 1
+    //$password = password_hash($_POST["password"],PASSWORD_DEFAULT);
 
 
-    if ($db->query($sql) === TRUE) {
-        echo "Successful Insertion";
-    }
+        $submitButton = $_POST["submit"];
 
+        if(isset($submitButton))
+        {
+            // Create New Account
+            $sql = "INSERT INTO Student VALUES ('$fName','$mName','$lName','$uEmail','$class','$majorGPA','$overallGPA','$password') ";
+
+            // Count Query
+            $testQuery = "SELECT COUNT(*) FROM Student WHERE Semail LIKE '$uEmail'";
+            $count = $db->query($testQuery)->fetch_array()[0];
+
+            if ($count >= 1)
+            {
+                echo "Account Already Exists";
+            } elseif ($db -> query($sql) === TRUE)
+            {
+                echo "Successful Submission";
+            } else {
+                echo "[-] An error has occurred:\t".$db->connect_errno;
+            }
+        }
 
 
 
