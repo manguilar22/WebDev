@@ -8,7 +8,7 @@
 
     <!-- Student Account -->
     <div class="studentForm">
-    <form method="post" action="#">
+    <form method="post" action="index.php">
         <label>Name</label> <br/>
         <input type="text" name="firstName" placeholder="First Name Goes Here"/> <br/>
         <input type="text" name="middleName" placeholder="Middle Name goes here. Type N/A if not applicable"/> <br/>
@@ -31,6 +31,47 @@
         <button type="submit">Create Account</button>
     </form>
     </div>
+
+    <?php
+    require "../oop/databaseConnect.php";
+    require "../oop/safetyChecks.php";
+    $databaseConnector = new DatabaseConnector();
+    $sanitizer = new Sanitizer();
+    //$db -> UTEP_CONNECT("maguilar15","*utep2020!","maguilar15_db");
+    $db = $databaseConnector -> DOCKER_CONNECT("172.17.0.2","root","password","test");
+
+        $fName = $_POST["firstName"];
+        $mName = $_POST["middleName"];
+        $lName = $_POST["lastName"];
+        $uEmail = $_POST["utepEmail"];
+        $class = $_POST["classification"];
+        $majorGPA = $_POST["majorGPA"];
+        $overallGPA = $_POST["overallGPA"];
+
+        $password = $_POST["password"];
+        // Data too long for column 'Spassword' at row 1
+        //$password = password_hash($_POST["password"],PASSWORD_DEFAULT);
+
+    $sql = "INSERT INTO Student VALUES ('$fName','$mName','$lName','$uEmail','$class','$majorGPA','$overallGPA','$password') ";
+
+    $checkStudentAccount = $sanitizer->checkDatabaseForExistingStudentAccount($uEmail);
+
+    if (count($checkStudentAccountQuery) == 0) {
+
+        if ($db->query($sql) === TRUE) {
+            echo "Successful Insertion";
+        } else {
+            print "Fail Code:" . $db->connect_errno;
+            print "Fail Message:\t" . $db->error;
+
+        }
+
+    } else {
+        echo "Account Already Exists";
+    }
+
+
+    ?>
 
 </body>
 

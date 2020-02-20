@@ -16,17 +16,11 @@
 
     <div class="navigation">
         <ol>
-            <li><a href="/student/index.php">Create an Account</a></li>
+            <li><a href="student/index.php">Create an Account</a></li>
         </ol>
     </div>
 
 
-    <?php
-    require "./oop/databaseConnect.php";
-    $db = new DatabaseConnector();
-    $db -> DOCKER_CONNECT("172.17.0.2","root","password","test");
-    echo "print if work";
-    ?>
 
 </body>
 
