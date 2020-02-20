@@ -10,15 +10,18 @@
 </head>
 <body>
 
-    <div class="banner">
-        <h1>UTEP TA/IA Applicants</h1>
-    </div>
+<div class="banner">
+    <h1>UTEP TA/IA Applicants</h1>
+</div>
 
-    <div class="navigation">
-        <ol>
-            <li><a href="student/index.php">Create an Account</a></li>
-        </ol>
-    </div>
+<div class="navigation">
+    <ol>
+        <li><a href="student/index.php">Create an Account</a></li>
+        <!-- <li><a href="/Classes/cs4342/Team10_am/student/index.php">Create an Account</a></li> -->
+        <li><a href="#">Log-in</a></li>
+        <!-- <li><a href="/Classes/cs4342/Team10_am/student/index.php">Create an Account</a></li> -->
+    </ol>
+</div>
 
 
 
