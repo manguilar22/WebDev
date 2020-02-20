@@ -49,27 +49,22 @@
         $overallGPA = $_POST["overallGPA"];
 
         $password = $_POST["password"];
+
         // Data too long for column 'Spassword' at row 1
         //$password = password_hash($_POST["password"],PASSWORD_DEFAULT);
 
     $sql = "INSERT INTO Student VALUES ('$fName','$mName','$lName','$uEmail','$class','$majorGPA','$overallGPA','$password') ";
 
-
     $testQuery = "SELECT COUNT(*) FROM Student WHERE Semail LIKE 'aass' ";
 
-    $count = $db -> query($testQuery) ->fetch_array()[0]; // HACKY
+    $count = $db -> query($testQuery)->fetch_array()[0]; // HACKY
 
-    if ($count === 0) {
-        if ($db->query($sql) === TRUE) {
-            echo "Successful Insertion";
-        } else {
-            print "Fail Code:" . $db->connect_errno;
-            print "[-] Status [-] Fail Message:\t" . $db->error;
 
-        }
-    } else {
-        echo "Account Already Exists";
+    if ($db->query($sql) === TRUE) {
+        echo "Successful Insertion";
     }
+
+
 
 
     ?>

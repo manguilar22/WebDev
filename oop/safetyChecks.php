@@ -17,14 +17,17 @@ class Sanitizer
 
     public function checkDatabaseForExistingStudentAccount($studentEmail)
     {
+        // https://stackoverflow.com/questions/3232607/pass-mysql-connection-to-function
 
-        $db = new mysqli("172.17.0.2","root","password","test"); // DELETEME
+        //$db = new mysqli("172.17.0.2","root","password","test"); // DELETE ME
 
-        $findStudent = "SELECT * FROM Student WHERE Semail LIKE ".$studentEmail;
+        $findStudent = "SELECT COUNT(*) FROM Student WHERE Semail LIKE ".$studentEmail;
 
         $query = $db -> query($findStudent);
 
-        return $query;
+        $result = $query->fetch_array()[0];
+
+        return $result;
 
     }
 
