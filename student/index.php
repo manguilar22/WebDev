@@ -37,21 +37,17 @@
     require "../oop/safetyChecks.php";
     $databaseConnector = new DatabaseConnector();
     $sanitizer = new Sanitizer();
-    //$db -> UTEP_CONNECT("maguilar15","*utep2020!","maguilar15_db");
-    $db = $databaseConnector -> DOCKER_CONNECT("172.17.0.2","root","password","test");
+    $db = $databaseConnector -> UTEP_CONNECT("maguilar15","*utep2020!","maguilar15_db");
+    //$db = $databaseConnector -> DOCKER_CONNECT("172.17.0.2","root","password","test");
 
         $fName = $_POST["firstName"];
-        $mName = $_POST["middleName"];
+        $mName = isset($_POST["middleName"])?$_POST["middleName"]:"N/A";
         $lName = $_POST["lastName"];
         $uEmail = $_POST["utepEmail"];
         $class = $_POST["classification"];
         $majorGPA = $_POST["majorGPA"];
         $overallGPA = $_POST["overallGPA"];
-
-        $password = $_POST["password"];
-
-    // Data too long for column 'Spassword' at row 1
-    //$password = password_hash($_POST["password"],PASSWORD_DEFAULT);
+        $password = password_hash($_POST["password"],PASSWORD_DEFAULT);
 
 
         $submitButton = $_POST["submit"];
@@ -72,7 +68,7 @@
             {
                 echo "Successful Submission";
             } else {
-                echo "[-] An error has occurred:\t".$db->connect_errno;
+                echo "[-] An error has occurred:\t".$db->error;
             }
         }
 
