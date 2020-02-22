@@ -12,7 +12,7 @@
 WebDev/
 ├── css  (All Website CSS) 
 │  
-├── db   (All Database Interactions)
+├── assignments   (All Database Queries)
 │   
 ├── form  (Practice Directory) 
 │  
