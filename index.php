@@ -18,8 +18,7 @@
     <ol>
         <li><a href="student/index.php">Create an Account</a></li>
         <!-- <li><a href="/Classes/cs4342/Team10_am/student/index.php">Create an Account</a></li> -->
-        <li><a href="#">Log-in</a></li>
-        <!-- <li><a href="/Classes/cs4342/Team10_am/student/index.php">Create an Account</a></li> -->
+        <li><a href="student/login.php">Log-in</a></li>
     </ol>
 </div>
 

@@ -37,8 +37,8 @@
     require "../oop/safetyChecks.php";
     $databaseConnector = new DatabaseConnector();
     $sanitizer = new Sanitizer();
-    $db = $databaseConnector -> UTEP_CONNECT("maguilar15","*utep2020!","maguilar15_db");
-    //$db = $databaseConnector -> DOCKER_CONNECT("172.17.0.2","root","password","test");
+    //$db = $databaseConnector -> UTEP_CONNECT("maguilar15","*utep2020!","maguilar15_db");
+    $db = $databaseConnector -> DOCKER_CONNECT("172.17.0.2","root","password","test");
 
         $fName = $_POST["firstName"];
         $mName = isset($_POST["middleName"])?$_POST["middleName"]:"N/A";
@@ -47,7 +47,8 @@
         $class = $_POST["classification"];
         $majorGPA = $_POST["majorGPA"];
         $overallGPA = $_POST["overallGPA"];
-        $password = password_hash($_POST["password"],PASSWORD_DEFAULT);
+        $password = $_POST["password"];
+        //$password = password_hash($_POST["password"],PASSWORD_DEFAULT);
 
 
         $submitButton = $_POST["submit"];
