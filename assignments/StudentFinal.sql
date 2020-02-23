@@ -1,5 +1,5 @@
 
-CREATE TABLE Student (
+CREATE TABLE StudentFinal (
     SfirstName CHAR(20),
     SmiddleName CHAR(20),
     SlastName CHAR(20),
@@ -9,5 +9,4 @@ CREATE TABLE Student (
     SmajorGPA DECIMAL(4,2),
     SoverallGPA DECIMAL(4,2),
     Spassword VARCHAR(100)
-);
-
+)

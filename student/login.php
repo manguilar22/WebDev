@@ -19,14 +19,16 @@ if (!empty($_POST)){
     if (isset($_POST['Submit'])){
         $input_username = isset($_POST['username']) ? $_POST['username'] : " ";
         $input_password = isset($_POST['password']) ? $_POST['password'] : " ";
-        $resultStudent = $conn -> query("SELECT COUNT(*) FROM Student WHERE Semail LIKE '$input_username' AND '$input_password'")
-        -> fetch_array()[0];
+        $findUser = "SELECT COUNT(*) FROM Student WHERE Semail LIKE '$input_username' AND '$input_password'";
+        $resultStudent = $conn -> query($findUser) -> fetch_array()[0];
         if ($resultStudent > 0 ) {
             $_SESSION['student_user'] = $input_username;
             $_SESSION['logged_in'] = true;
-            echo"User found";
+            //echo"User found";
+            header("Location: ../jobs/applicantPage.php");
         } else {
-            echo "User not found.".$resultStudent;
+            echo "User does not exist.";
+            echo "Click below and create an account.";
         }
     }
 }
@@ -45,11 +47,11 @@ if (!empty($_POST)){
         <input name='Submit' type="submit" value="Submit">
     </form>
 </div>
-<a href="index.html">CREATE USER ACCOUNT</a><br>
+<a href="./create_account.php">CREATE USER ACCOUNT</a><br>
 
 <br>
 </div>
-<a href="index.php">Back</a><br>
+<a href="../index.php">Back</a><br>
 
 </body>
 </html>

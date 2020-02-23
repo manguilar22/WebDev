@@ -4,8 +4,12 @@
 
 		public function __constructor(){} 
 
-		public function UTEP_CONNECT($user,$password,$database) {
+		public function UTEP_CONNECT($database) {
+		    //////////////////////////////////////////////
 			$utepMYSQLAddr = "ilinkserver.cs.utep.edu";
+			$user = "maguilar15";
+			$password = "*utep$2020!";
+			////////////////////////////////////////////////
 			$conn = new mysqli($utepMYSQLAddr,$user,$password,$database);
 			if ($conn -> connect_error){
 				die("Failed connection to UTEP database");
@@ -21,7 +25,15 @@
 			return $connection;
 		}
 
-		public function DOCKER_COMPOSE_CONNECT(){}
+		public function DOCKER_COMPOSE_CONNECT(){
+            $dockerComposeHost = "mysqlDB";
+            $connection = new mysqli($dockerComposeHost,"root","password","test");
+            if ($connection -> connect_error)
+            {
+                die("Failed to connect to Docker Compose Instance");
+            }
+            return $connection;
+        }
 
 
 	} 

@@ -8,7 +8,7 @@
 
     <!-- Student Account -->
     <div class="studentForm">
-    <form method="post" action="index.php">
+    <form method="post" action="create_account.php">
         <label>Name</label> <br/>
         <input type="text" name="firstName" placeholder="First Name Goes Here"/> <br/>
         <input type="text" name="middleName" placeholder="Middle Name goes here. Type N/A if not applicable"/> <br/>
@@ -22,6 +22,11 @@
             <option value="Graduate">Graduate</option>
             <option value="Doctorate">Doctorate</option>
         </select> <br/>
+        <select name="status">
+            <option value="In-state">Instate</option>
+            <option value="International">International</option>
+            <option value="Out-state">Out of State</option>
+        </select>
         <label>Major GPA</label> <br/>
         <input type="text" name="majorGPA" placeholder="Major GPA"/> <br/>
         <label>Overall GPA</label> <br/>
@@ -37,7 +42,6 @@
     require "../oop/safetyChecks.php";
     $databaseConnector = new DatabaseConnector();
     $sanitizer = new Sanitizer();
-    //$db = $databaseConnector -> UTEP_CONNECT("maguilar15","*utep2020!","maguilar15_db");
     $db = $databaseConnector -> DOCKER_CONNECT("172.17.0.2","root","password","test");
 
         $fName = $_POST["firstName"];
@@ -45,6 +49,7 @@
         $lName = $_POST["lastName"];
         $uEmail = $_POST["utepEmail"];
         $class = $_POST["classification"];
+        $status = isset($_POST["status"]) ?  $_POST["status"] : "N/A";
         $majorGPA = $_POST["majorGPA"];
         $overallGPA = $_POST["overallGPA"];
         $password = $_POST["password"];
@@ -56,7 +61,7 @@
         if(isset($submitButton))
         {
             // Create New Account
-            $sql = "INSERT INTO Student VALUES ('$fName','$mName','$lName','$uEmail','$class','$majorGPA','$overallGPA','$password') ";
+            $sql = "INSERT INTO Student VALUES ('$fName','$mName','$lName','$uEmail','$class','$status','$majorGPA','$overallGPA','$password') ";
 
             // Count Query
             $testQuery = "SELECT COUNT(*) FROM Student WHERE Semail LIKE '$uEmail'";
