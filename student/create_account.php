@@ -22,11 +22,12 @@
             <option value="Graduate">Graduate</option>
             <option value="Doctorate">Doctorate</option>
         </select> <br/>
+        <label>Residency Status</label> <br/>
         <select name="status">
             <option value="In-state">Instate</option>
             <option value="International">International</option>
             <option value="Out-state">Out of State</option>
-        </select>
+        </select> <br/>
         <label>Major GPA</label> <br/>
         <input type="text" name="majorGPA" placeholder="Major GPA"/> <br/>
         <label>Overall GPA</label> <br/>
@@ -42,7 +43,8 @@
     require "../oop/safetyChecks.php";
     $databaseConnector = new DatabaseConnector();
     $sanitizer = new Sanitizer();
-    $db = $databaseConnector -> DOCKER_CONNECT("172.17.0.2","root","password","test");
+    //$db = $databaseConnector -> DOCKER_CONNECT("172.17.0.2","root","password","test");
+    $db = $databaseConnector -> UTEP_CONNECT();
 
         $fName = $_POST["firstName"];
         $mName = isset($_POST["middleName"])?$_POST["middleName"]:"N/A";

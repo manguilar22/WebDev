@@ -1,17 +1,10 @@
 <?php
-/**
- * CS 4342 Database Management
- * @author Kevin Apodaca
- * @since 2/12/20
- * @version 1.0
- * Description: The purpose of this file is to serve as simple login system that validates username and password.
- */
 
 session_start();
 require_once("../oop/databaseConnect.php");
 $databaseConnector = new DatabaseConnector();
-$conn = $databaseConnector -> DOCKER_CONNECT("172.17.0.2","root","password","test");
-
+//$conn = $databaseConnector -> DOCKER_CONNECT("172.17.0.2","root","password","test");
+$conn = $databaseConnector->UTEP_CONNECT();
 $_SESSION['logged_in'] = false;
 
 
@@ -36,7 +29,7 @@ if (!empty($_POST)){
 
 <!DOCTYPE HTML>
 <head>
-    <title>CS 4342 Test Login</title>
+    <title>Login</title>
 </head>
 <body>
 <h1>USER LOG IN</h1>
@@ -47,7 +40,7 @@ if (!empty($_POST)){
         <input name='Submit' type="submit" value="Submit">
     </form>
 </div>
-<a href="./create_account.php">CREATE USER ACCOUNT</a><br>
+<a href="./create_account.php">Create Account Here</a><br>
 
 <br>
 </div>

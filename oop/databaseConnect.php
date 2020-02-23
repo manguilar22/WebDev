@@ -4,11 +4,12 @@
 
 		public function __constructor(){} 
 
-		public function UTEP_CONNECT($database) {
+		public function UTEP_CONNECT() {
 		    //////////////////////////////////////////////
 			$utepMYSQLAddr = "ilinkserver.cs.utep.edu";
 			$user = "maguilar15";
-			$password = "*utep$2020!";
+			$password = "*utep2020!";
+            $database = "s20am_team10";
 			////////////////////////////////////////////////
 			$conn = new mysqli($utepMYSQLAddr,$user,$password,$database);
 			if ($conn -> connect_error){

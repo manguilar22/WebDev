@@ -12,5 +12,7 @@ CREATE TABLE SuperUsers (
     Slname CHAR (10),
     Susernmae VARCHAR (20),
     Spassword VARCHAR (20),
-    Sstatus VARCHAR (10),           /*  ADMIN or COORDINATOR, depending on role permissions are granted*/
+    Sstatus VARCHAR (10)
 );
+
+/*  ADMIN or COORDINATOR, depending on role permissions are granted*/
