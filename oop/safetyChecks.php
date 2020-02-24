@@ -15,21 +15,15 @@ class Sanitizer
     }
 
 
-    public function checkDatabaseForExistingStudentAccount($studentEmail)
+    public function checkGPA($value)
     {
-        // https://stackoverflow.com/questions/3232607/pass-mysql-connection-to-function
-
-        //$db = new mysqli("172.17.0.2","root","password","test"); // DELETE ME
-
-        $findStudent = "SELECT COUNT(*) FROM Student WHERE Semail LIKE ".$studentEmail;
-
-        $query = $db -> query($findStudent);
-
-        $result = $query->fetch_array()[0];
-
-        return $result;
-
+        if ($value > 4.00 || -0 >= $value)
+        {
+            echo "Impossible, UTEP grade point scale is from 1.00 to 4.00 <br/>";
+        }
+        return $value;
     }
+
 
 
 }

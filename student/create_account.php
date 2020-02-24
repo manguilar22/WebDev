@@ -43,8 +43,9 @@
     require "../oop/safetyChecks.php";
     $databaseConnector = new DatabaseConnector();
     $sanitizer = new Sanitizer();
-    //$db = $databaseConnector -> DOCKER_CONNECT("172.17.0.2","root","password","test");
-    $db = $databaseConnector -> UTEP_CONNECT();
+
+    $db = $databaseConnector -> DOCKER_CONNECT("172.17.0.2","root","password","s20am_team10");
+    //$db = $databaseConnector -> UTEP_CONNECT();
 
         $fName = $_POST["firstName"];
         $mName = isset($_POST["middleName"])?$_POST["middleName"]:"N/A";
@@ -52,8 +53,8 @@
         $uEmail = $_POST["utepEmail"];
         $class = $_POST["classification"];
         $status = isset($_POST["status"]) ?  $_POST["status"] : "N/A";
-        $majorGPA = $_POST["majorGPA"];
-        $overallGPA = $_POST["overallGPA"];
+        $majorGPA = isset($_POST["majorGPA"]) ? $sanitizer->checkGPA($_POST["majorGPA"]) : 0.0;
+        $overallGPA = isset($_POST["overallGPA"]) ? $sanitizer->checkGPA($_POST["overallGPA"]) : 0.0;
         $password = $_POST["password"];
         //$password = password_hash($_POST["password"],PASSWORD_DEFAULT);
 

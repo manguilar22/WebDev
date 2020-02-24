@@ -26,9 +26,9 @@
 			return $connection;
 		}
 
-		public function DOCKER_COMPOSE_CONNECT(){
+		public function DOCKER_COMPOSE_CONNECT($databaseName){
             $dockerComposeHost = "mysqlDB";
-            $connection = new mysqli($dockerComposeHost,"root","password","test");
+            $connection = new mysqli($dockerComposeHost,"root","password",$databaseName);
             if ($connection -> connect_error)
             {
                 die("Failed to connect to Docker Compose Instance");
