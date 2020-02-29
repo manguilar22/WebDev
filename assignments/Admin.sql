@@ -13,6 +13,6 @@ CREATE TABLE SuperUsers (
     Susername VARCHAR (20),
     Spassword VARCHAR (20),
     Sstatus VARCHAR (20)
-);
+) ENGINE=InnoDB;
 
 /*  ADMIN or COORDINATOR, depending on role permissions are granted*/

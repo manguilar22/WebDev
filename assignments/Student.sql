@@ -9,5 +9,5 @@ CREATE TABLE Student (
     SmajorGPA DECIMAL(4,2),
     SoverallGPA DECIMAL(4,2),
     Spassword VARCHAR(100)
-);
+) ENGINE=InnoDB;
 
