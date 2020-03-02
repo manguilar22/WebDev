@@ -54,14 +54,19 @@ if (!empty($_POST)){
 <!DOCTYPE HTML>
 <head>
     <title>Login</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
+
 </head>
 <body>
 <h1>USER LOG IN</h1>
 <div id="menu">
     <form action="login.php" method="post">
-        username: <input type="text" name="username"><br><br>
-        password: <input type="password" name="password"><br><br>
-        <input name='Submit' type="submit" value="Submit">
+        <label>User Name</label>
+        <input class="form-control" type="text" name="username">
+        <small class="form-text text-muted">use UTEP email</small>
+        <label>Password</label>
+        <input class="form-control" type="password" name="password"> <br/> <!-- TODO: -->
+        <button class="btn btn-primary" name="Submit" type="submit">Submit</button>
     </form>
 </div>
 <a href="./create_account.php">Create Account Here</a><br/>

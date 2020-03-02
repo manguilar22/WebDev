@@ -1,40 +1,44 @@
 <html>
 
 <head>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
     <link rel="stylesheet" href="../css/student.css"/>
+    <title>Account</title>
 </head>
 
 <body>
+
+    <h1>Create an Account</h1>
 
     <!-- Student Account -->
     <div class="studentForm">
     <form method="post" action="create_account.php">
         <label>Name</label> <br/>
-        <input type="text" name="firstName" placeholder="First Name Goes Here"/> <br/>
-        <input type="text" name="middleName" placeholder="Middle Name goes here. Type N/A if not applicable"/> <br/>
-        <input type="text" name="lastName" placeholder="Last Name Goes Here"/> <br/>
+        <input class="form-control" type="text" name="firstName" placeholder="First Name Goes Here"/> <br/>
+        <input class="form-control" type="text" name="middleName" placeholder="Middle Name goes here. Type N/A if not applicable"/> <br/>
+        <input class="form-control" type="text" name="lastName" placeholder="Last Name Goes Here"/> <br/>
         <label>UTEP Email</label> <br/>
-        <input type="text" name="utepEmail" placeholder="Use student email, please"/> <br/>
+        <input class="form-control" type="text" name="utepEmail" placeholder="Use student email, please"/> <br/>
         <label>Classification</label> <br/>
         <!-- SELECT GOES HERE -->
-        <select name="classification">
+        <select class="form-control" name="classification">
             <option value="Undergraduate">Undergraduate</option>
             <option value="Graduate">Graduate</option>
             <option value="Doctorate">Doctorate</option>
         </select> <br/>
         <label>Residency Status</label> <br/>
-        <select name="status">
+        <select class="form-control" name="status">
             <option value="In-state">Instate</option>
             <option value="International">International</option>
             <option value="Out-state">Out of State</option>
         </select> <br/>
         <label>Major GPA</label> <br/>
-        <input type="text" name="majorGPA" placeholder="Major GPA"/> <br/>
+        <input class="form-control" type="text" name="majorGPA" placeholder="Major GPA"/> <br/>
         <label>Overall GPA</label> <br/>
-        <input type="text" name="overallGPA" placeholder="Overall GPA"/> <br/>
+        <input class="form-control" type="text" name="overallGPA" placeholder="Overall GPA"/> <br/>
         <label>Password</label> <br/>
-        <input type="password" name="password" placeholder="type a secret password"/><br/>
-        <input name='submit' type="submit" value="Create Account"/>
+        <input class="form-control" type="password" name="password" placeholder="type a secret password"/><br/>
+        <input class="form-control" name='submit' type="submit" value="Create Account"/>
     </form>
     </div>
 
