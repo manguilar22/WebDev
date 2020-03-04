@@ -38,7 +38,7 @@
         <input class="form-control" type="text" name="overallGPA" placeholder="Overall GPA"/> <br/>
         <label>Password</label> <br/>
         <input class="form-control" type="password" name="password" placeholder="type a secret password"/><br/>
-        <input class="form-control" name='submit' type="submit" value="Create Account"/>
+        <input class="btn btn-primary" name='submit' type="submit" value="Create Account"/>
     </form>
     </div>
 
@@ -48,8 +48,8 @@
     $databaseConnector = new DatabaseConnector();
     $sanitizer = new Sanitizer();
 
-    //$db = $databaseConnector -> DOCKER_CONNECT("172.17.0.2","root","password","s20am_team10");
-    $db = $databaseConnector -> UTEP_CONNECT();
+    $db = $databaseConnector -> DOCKER_CONNECT("172.17.0.2","root","password","s20am_team10");
+    //$db = $databaseConnector -> UTEP_CONNECT();
 
         $fName = $_POST["firstName"];
         $mName = isset($_POST["middleName"])?$_POST["middleName"]:"N/A";

@@ -3,8 +3,8 @@
 session_start();
 require_once("../oop/databaseConnect.php");
 $databaseConnector = new DatabaseConnector();
-//$conn = $databaseConnector -> DOCKER_CONNECT("172.17.0.2","root","password","s20am_team10");
-$conn = $databaseConnector->UTEP_CONNECT();
+$conn = $databaseConnector -> DOCKER_CONNECT("172.17.0.2","root","password","s20am_team10");
+//$conn = $databaseConnector->UTEP_CONNECT();
 $_SESSION['logged_in'] = false;
 
 
@@ -26,7 +26,7 @@ if (!empty($_POST)){
         $resultCoordinator = $conn -> query($findCoordinator) -> fetch_array()[0];
 
         if ($resultStudent > 0 ) {
-            $_SESSION['user'] = $input_username;
+            $_SESSION['user'] = strval($input_username);
             $_SESSION['logged_in'] = true;
             $_SESSION["status"] = "student";
             //echo"User found";
