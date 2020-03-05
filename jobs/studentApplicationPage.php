@@ -1,9 +1,7 @@
+<?php session_start(); ?>
 <!-- Maintain Applicant's Information-->
 <?php
 require_once("../oop/databaseConnect.php");
-session_start();
-
-//echo session.session_save_path();
 
 $databaseConnector = new DatabaseConnector();
 $db = $databaseConnector -> DOCKER_CONNECT("172.17.0.2","root","password","s20am_team10");
