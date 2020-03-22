@@ -1,9 +1,9 @@
+<?php session_start(); ?>
 <?php
 
-session_start();
 require_once("../oop/databaseConnect.php");
 $databaseConnector = new DatabaseConnector();
-$conn = $databaseConnector -> DOCKER_CONNECT("172.17.0.2","root","password","s20am_team10");
+$conn = $databaseConnector -> DOCKER_CONNECT("127.0.0.1","root","password","s20am_team10");
 //$conn = $databaseConnector->UTEP_CONNECT();
 $_SESSION['logged_in'] = false;
 

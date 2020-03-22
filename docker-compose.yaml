@@ -18,4 +18,4 @@ services:
       MYSQL_ROOT_PASSWORD: utep
       MYSQL_USER: user
       MYSQL_PASSWORD: utep
-      MYSQL_DATABASE: utep
+      MYSQL_DATABASE: s20am_team10

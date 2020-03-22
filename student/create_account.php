@@ -1,3 +1,51 @@
+<?php
+require "../oop/databaseConnect.php";
+require "../oop/safetyChecks.php";
+
+$sanitizer = new Sanitizer();
+
+$databaseConnector = new DatabaseConnector();
+$db = $databaseConnector -> DOCKER_CONNECT("127.0.0.1","root","password","s20am_team10");
+//$db = $databaseConnector -> UTEP_CONNECT();
+
+$fName = $sanitizer->cleanInput($_POST["firstName"]);
+$mName = isset($_POST["middleName"])?$_POST["middleName"]:"N/A";
+$lName = $sanitizer->cleanInput($_POST["lastName"]);
+$uEmail = $sanitizer->cleanInput($_POST["utepEmail"]);
+$class = $_POST["classification"];
+$status = isset($_POST["status"]) ?  $_POST["status"] : "N/A";
+$majorGPA = isset($_POST["majorGPA"]) ? $sanitizer->checkGPA($_POST["majorGPA"]) : 0.0;
+$overallGPA = isset($_POST["overallGPA"]) ? $sanitizer->checkGPA($_POST["overallGPA"]) : 0.0;
+$password = $_POST["password"];
+//$password = password_hash($_POST["password"],PASSWORD_DEFAULT);
+
+$submitButton = $_POST["submit"];
+
+if(isset($submitButton))
+{
+    // Create New Account
+    $sql = "INSERT INTO Student VALUES ('$fName','$mName','$lName','$uEmail','$class','$status','$majorGPA','$overallGPA','$password') ";
+
+    // Count Query
+    $testQuery = "SELECT COUNT(*) FROM Student WHERE Semail LIKE '$uEmail'";
+    $count = $db->query($testQuery)->fetch_array()[0];
+
+    if ($count >= 1)
+    {
+        echo "Account Already Exists";
+    } elseif ($db -> query($sql) === TRUE)
+    {
+        echo "Successful Submission";
+    } else {
+        echo "[-] An error has occurred:\t".$db->error;
+    }
+}
+
+
+
+?>
+
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -41,53 +89,6 @@
         <input class="btn btn-primary" name='submit' type="submit" value="Create Account"/>
     </form>
     </div>
-
-    <?php
-    require "../oop/databaseConnect.php";
-    require "../oop/safetyChecks.php";
-    $databaseConnector = new DatabaseConnector();
-    $sanitizer = new Sanitizer();
-
-    $db = $databaseConnector -> DOCKER_CONNECT("172.17.0.2","root","password","s20am_team10");
-    //$db = $databaseConnector -> UTEP_CONNECT();
-
-        $fName = $_POST["firstName"];
-        $mName = isset($_POST["middleName"])?$_POST["middleName"]:"N/A";
-        $lName = $_POST["lastName"];
-        $uEmail = $_POST["utepEmail"];
-        $class = $_POST["classification"];
-        $status = isset($_POST["status"]) ?  $_POST["status"] : "N/A";
-        $majorGPA = isset($_POST["majorGPA"]) ? $sanitizer->checkGPA($_POST["majorGPA"]) : 0.0;
-        $overallGPA = isset($_POST["overallGPA"]) ? $sanitizer->checkGPA($_POST["overallGPA"]) : 0.0;
-        $password = $_POST["password"];
-        //$password = password_hash($_POST["password"],PASSWORD_DEFAULT);
-
-
-        $submitButton = $_POST["submit"];
-
-        if(isset($submitButton))
-        {
-            // Create New Account
-            $sql = "INSERT INTO Student VALUES ('$fName','$mName','$lName','$uEmail','$class','$status','$majorGPA','$overallGPA','$password') ";
-
-            // Count Query
-            $testQuery = "SELECT COUNT(*) FROM Student WHERE Semail LIKE '$uEmail'";
-            $count = $db->query($testQuery)->fetch_array()[0];
-
-            if ($count >= 1)
-            {
-                echo "Account Already Exists";
-            } elseif ($db -> query($sql) === TRUE)
-            {
-                echo "Successful Submission";
-            } else {
-                echo "[-] An error has occurred:\t".$db->error;
-            }
-        }
-
-
-
-    ?>
 
 </body>
 

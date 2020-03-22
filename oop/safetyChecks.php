@@ -15,6 +15,24 @@ class Sanitizer
     }
 
 
+    /**
+     * Basic parsing of string, using the core built-in functions.
+     * @param $str
+     * @return string
+     */
+    public function cleanInput($str)
+    {
+        $str = trim($str);
+        $str = stripslashes($str);
+        $str = htmlspecialchars($str);
+        return $str;
+    }
+
+    /**
+     * Check if GPA is within a valid range
+     * @param $value
+     * @return mixed
+     */
     public function checkGPA($value)
     {
         if ($value > 4.00 || -0 >= $value)
@@ -23,6 +41,8 @@ class Sanitizer
         }
         return $value;
     }
+
+
 
 
 
