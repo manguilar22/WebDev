@@ -6,7 +6,7 @@ services:
     container_name: php-server
     image: php:utep
     build:
-      context: .
+      context: public/.
       dockerfile: Dockerfile
     environment:
       MYSQL_HOST: 172.18.0.2 #AUTOMATE
