@@ -18,7 +18,6 @@ jobs:
     steps: 
       - name: Build & Push Image  
         run: | 
-          cd . 
           docker login --username=manguilar22 --password=${{ secrets.DOCKER_PW }}
-          docker image build -t manguilar22/php:utep .
+          docker image build -t manguilar22/php:utep -f Dockerfile .
           docker push manguilar22/php:utep
