@@ -18,8 +18,11 @@
 			return $conn;
 		}
 
-		public function DOCKER_CONNECT($host_uri,$username,$password,$database){
-			$connection = new mysqli($host_uri,$username,$password,$database);
+		public function DOCKER_CONNECT($username,$password,$database){
+
+		    $host_uri = getenv("MYSQL_HOST");
+
+		    $connection = new mysqli($host_uri,$username,$password,$database);
 			if ($connection -> connect_error) {
 				die("Failed to connect to Docker instance");
 			}

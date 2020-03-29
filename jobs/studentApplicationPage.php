@@ -4,7 +4,7 @@
 require_once("../oop/databaseConnect.php");
 
 $databaseConnector = new DatabaseConnector();
-$db = $databaseConnector -> DOCKER_CONNECT("127.0.0.1","root","password","s20am_team10");
+$db = $databaseConnector -> DOCKER_CONNECT("root","password","s20am_team10");
 //$db = $databaseConnector->UTEP_CONNECT();
 
 $username = $_SESSION["user"];

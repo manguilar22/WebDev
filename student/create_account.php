@@ -5,7 +5,7 @@ require "../oop/safetyChecks.php";
 $sanitizer = new Sanitizer();
 
 $databaseConnector = new DatabaseConnector();
-$db = $databaseConnector -> DOCKER_CONNECT("127.0.0.1","root","password","s20am_team10");
+$db = $databaseConnector -> DOCKER_CONNECT("root","password","s20am_team10");
 //$db = $databaseConnector -> UTEP_CONNECT();
 
 $fName = $sanitizer->cleanInput($_POST["firstName"]);
@@ -24,7 +24,27 @@ $submitButton = $_POST["submit"];
 if(isset($submitButton))
 {
     // Create New Account
-    $sql = "INSERT INTO Student VALUES ('$fName','$mName','$lName','$uEmail','$class','$status','$majorGPA','$overallGPA','$password') ";
+    $sql = "INSERT INTO Student(
+                    SfirstName,
+                    SmiddleName,
+                    SlastName,
+                    Semail,
+                    Sclass,
+                    SResidencyStatus,
+                    SmajorGPA,
+                    SoverallGPA,
+                    Spassword
+            ) 
+            VALUES (
+            '$fName',
+            '$mName',
+            '$lName',
+            '$uEmail',
+            '$class',
+            '$status',
+            '$majorGPA',
+            '$overallGPA',
+            '$password') ";
 
     // Count Query
     $testQuery = "SELECT COUNT(*) FROM Student WHERE Semail LIKE '$uEmail'";
@@ -36,6 +56,8 @@ if(isset($submitButton))
     } elseif ($db -> query($sql) === TRUE)
     {
         echo "Successful Submission";
+    } elseif ($db->error){
+        echo "Account already exists because of the email.";
     } else {
         echo "[-] An error has occurred:\t".$db->error;
     }

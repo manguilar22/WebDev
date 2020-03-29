@@ -8,6 +8,10 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    environment:
+      MYSQL_HOST: 172.18.0.2 #AUTOMATE
+    depends_on:
+      - mysqlDB
     ports:
       - "8080:80"
 

@@ -24,6 +24,9 @@
 </div>
 
 
+<h1 style="color:red">Test Purpose, Delete Later</h1>
+<h4> WORKS <?php echo getenv("MYSQL_HOST")?></h4>
+
 
 </body>
 
