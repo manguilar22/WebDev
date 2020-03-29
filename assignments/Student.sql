@@ -37,10 +37,10 @@ INSERT INTO Student(
                         "user",
                         "N/A",
                         "user",
-                        "user@user1.com",
+                        "user",
                         "undergraduate",
                         "in-state",
                          3.33,
                          3.33,
                          "user1"
-                    )
+                    );
