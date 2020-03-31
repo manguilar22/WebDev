@@ -1,6 +1,6 @@
 # Database Management 
 
-# Build Status: ![](https://www.github.com/manguilar22/WebDev/workflows/CD-docker/badge.svg)
+##### Build Status: ![](https://www.github.com/manguilar22/WebDev/workflows/CD-docker/badge.svg)
 
 ### UTEP Style Guide 
 
@@ -8,3 +8,9 @@
                    
 
 ### Directory Structure 
+
+* **.github/workflows/docker-demo.yaml*** 
+* **assignments/** 
+* **public/** 
+* **Dockerfile** 
+* **docker-compose.yaml** 

@@ -3,24 +3,24 @@ version: "3"
 services:
 
   php-server:
-    container_name: php-server
+    container_name: utep-php-server
     image: php:utep
     build:
-      context: public/.
+      context: .
       dockerfile: Dockerfile
     environment:
-      MYSQL_HOST: 172.19.0.2 #AUTOMATE
+      MYSQL_HOST: mysqlDB #172.17.0.2 #AUTOMATE
     depends_on:
       - mysqlDB
     ports:
       - "8080:80"
    
   mysqlDB:
-    container_name: php-db
+    container_name: utep-mysql-db
     image: mysql:5.7
     environment:
-      MYSQL_ROOT_PASSWORD: utep
-      MYSQL_USER: user
-      MYSQL_PASSWORD: utep
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: root
+      MYSQL_PASSWORD: password
       MYSQL_DATABASE: s20am_team10
     

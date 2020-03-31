@@ -4,12 +4,15 @@
 require_once("../oop/databaseConnect.php");
 
 $databaseConnector = new DatabaseConnector();
-$db = $databaseConnector -> DOCKER_CONNECT("root","password","s20am_team10");
+$conn = $databaseConnector -> DOCKER_CONNECT("root","password","s20am_team10");
 //$db = $databaseConnector->UTEP_CONNECT();
 
 $username = $_SESSION["user"];
 $mysqlQuery = "SELECT (Sclass) FROM Student WHERE Semail LIKE '$username'";
-$classification = $db -> query($mysqlQuery) -> fetch_array()[0];
+$classification = $conn -> query($mysqlQuery) -> fetch_array()[0];
+
+$jobPositngQuery = "SELECT * FROM Role ORDER BY id DESC";
+$jobPostings = $conn -> query($jobPositngQuery);
 
 ?>
 <!DOCTYPE html>
@@ -30,6 +33,20 @@ $classification = $db -> query($mysqlQuery) -> fetch_array()[0];
     <form action="studentApplicationPage.php" method="post">
 
     </form>
+
+    <h1>Positions</h1>
+
+    <ol>
+        <?php
+            foreach ($jobPostings as $item)
+            {
+                echo "<li>";
+                echo $item["RjobTitle"];
+                echo "</li>";
+            }
+            ?>
+    </ol>
+
 
 
 </body>

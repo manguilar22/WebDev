@@ -7,10 +7,10 @@
 
  CREATE TABLE Role (
     id INT NOT NULL AUTO_INCREMENT,
-    RjobTitle VARCHAR (2),
-    RclassName VARCHAR (20),
-    RclassCRN VARCHAR (10),
-    PRIMARY KEY (id)
+    RjobTitle VARCHAR(2),
+    RclassName VARCHAR(20),
+    RclassCRN VARCHAR(10),
+    PRIMARY KEY (id) /* Original Key: id */
  ) ENGINE=Innodb;
 
 

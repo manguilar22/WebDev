@@ -1,7 +1,6 @@
-
 /*
 
-    Coordinator and Admin Entities
+    Coordinator & Admin Entities
 
  */
 
@@ -35,7 +34,7 @@ INSERT INTO SuperUsers(
     "admin",
     "admin1",
     "ADMIN"
-)
+);
 
 /**
     Coordinator
@@ -50,7 +49,7 @@ INSERT INTO SuperUsers(
 ) VALUES (
     "Mr.",
     "Important",
-    "admin",
-    "admin1",
+    "coor",
+    "coor1",
     "COORDINATOR"
-)
+);

@@ -22,6 +22,7 @@
 <!-- Create a Job Role as a Admin -->
 <h4>Create Role</h4>
 
+<div class="createRole">
 <form action="adminPage.php" method="post">
 
     <label for="Student Title"></label>
@@ -39,27 +40,57 @@
 </form>
 <?php
 
-
 $jobTitle = $_POST["jobTitle"];
 $className = $_POST["className"];
 $classCRN = $_POST["classCRN"];
 
-if ( isset($_POST["submit"]) )
+$predicate = empty($className) && empty($classCRN);
+if( !$predicate && isset($_POST["submit"]) )
 {
     $sql = "INSERT INTO Role(RjobTitle,RclassName,RclassCRN) VALUES (
             '$jobTitle',
             '$className',
             '$classCRN'
             )";
-    if ($conn->query($sql)) { echo "submit"; }
+    if ($conn->query($sql)) { echo "submit";}
     elseif ($conn->error) { echo "CRN Already Used"; }
     else { echo "[-] Should not be here"; }
+} elseif ($predicate)
+{
+    echo "Empty Values Not Accepted";
 }
 ?>
+</div>
 
 
 <!-- All Jobs in Database Table -->
+<h4>Show Jobs</h4>
+<div class="showTable">
+    <table>
+        <thead>
+            <th>Job Title</th>
+            <th>Class Name</th>
+            <th>CRN</th>
+        </thead>
+        <tr/>
+        <tbody>
+        <?php
 
+        $sql = "SELECT * FROM Role ORDER BY id DESC";
+        foreach ($conn->query($sql)as $row)
+        {
+            echo "<tr>";
+            echo "<td>".$row["RjobTitle"]."</td>";
+            echo "<td>".$row["RclassName"]."</td>";
+            echo "<td>".$row["RclassCRN"]."</td>";
+            echo "</tr>";
+        }
+
+
+        ?>
+        </tbody>
+    </table>
+</div>
 
 </body>
 </html>
