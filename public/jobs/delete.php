@@ -4,9 +4,10 @@
 
 $id = $_GET["id"];
 
-include "../oop/databaseConnect.php";
+require_once "../oop/databaseConnect.php";
 $database = new DatabaseConnector();
-$conn = $database->DOCKER_CONNECT("root","password","s20am_team10");
+//$conn = $database->DOCKER_CONNECT("root","password","s20am_team10");
+$conn = $database->UTEP_CONNECT();
 
 $sql = "DELETE FROM Role WHERE id LIKE '$id'";
 

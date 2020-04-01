@@ -1,12 +1,12 @@
 <?php
-require "../oop/databaseConnect.php";
-require "../oop/safetyChecks.php";
+require_once "../oop/databaseConnect.php";
+require_once "../oop/safetyChecks.php";
 
 $sanitizer = new Sanitizer();
 
 $databaseConnector = new DatabaseConnector();
-$db = $databaseConnector -> DOCKER_CONNECT("root","password","s20am_team10");
-//$db = $databaseConnector -> UTEP_CONNECT();
+//$conn = $databaseConnector -> DOCKER_CONNECT("root","password","s20am_team10");
+$conn = $databaseConnector -> UTEP_CONNECT();
 
 $fName = $sanitizer->cleanInput($_POST["firstName"]);
 $mName = isset($_POST["middleName"])?$_POST["middleName"]:"N/A";
@@ -48,18 +48,18 @@ if(isset($submitButton))
 
     // Count Query
     $testQuery = "SELECT COUNT(*) FROM Student WHERE Semail LIKE '$uEmail'";
-    $count = $db->query($testQuery)->fetch_array()[0];
+    $count = $conn->query($testQuery)->fetch_array()[0];
 
     if ($count >= 1)
     {
         echo "Account Already Exists";
-    } elseif ($db -> query($sql) === TRUE)
+    } elseif ($conn -> query($sql) === TRUE)
     {
         echo "Successful Submission";
-    } elseif ($db->error){
+    } elseif ($conn->error){
         echo "Account already exists because of the email.";
     } else {
-        echo "[-] An error has occurred:\t".$db->error;
+        echo "[-] An error has occurred:\t".$conn->error;
     }
 }
 
