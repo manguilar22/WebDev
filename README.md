@@ -9,7 +9,7 @@
 
 ### Directory Structure 
 
-* **.github/workflows/docker-demo.yaml*** 
+* **.github/workflows/docker-demo.yaml**
 * **assignments/** 
 * **public/** 
 * **Dockerfile** 

@@ -21,7 +21,6 @@
 
 <!-- Create a Job Role as a Admin -->
 <h4>Create Role</h4>
-
 <div class="createRole">
 <form action="adminPage.php" method="post">
 
@@ -36,7 +35,6 @@
     <label for="Class CRN"></label>
     <input type="text" name="classCRN" placeholder="UTEP Class CRN"/>
     <input type="submit" name="submit" placeholder="Submit Job"/>
-
 </form>
 <?php
 
@@ -45,6 +43,7 @@ $className = $_POST["className"];
 $classCRN = $_POST["classCRN"];
 
 $predicate = empty($className) && empty($classCRN);
+
 if( !$predicate && isset($_POST["submit"]) )
 {
     $sql = "INSERT INTO Role(RjobTitle,RclassName,RclassCRN) VALUES (
@@ -53,12 +52,16 @@ if( !$predicate && isset($_POST["submit"]) )
             '$classCRN'
             )";
     if ($conn->query($sql)) { echo "submit";}
-    elseif ($conn->error) { echo "CRN Already Used"; }
-    else { echo "[-] Should not be here"; }
+    else { echo "CRN Already Used"; }
+
 } elseif ($predicate)
 {
     echo "Empty Values Not Accepted";
 }
+
+
+
+
 ?>
 </div>
 
@@ -71,19 +74,28 @@ if( !$predicate && isset($_POST["submit"]) )
             <th>Job Title</th>
             <th>Class Name</th>
             <th>CRN</th>
+            <th>Delete</th>
         </thead>
         <tr/>
         <tbody>
         <?php
 
+
         $sql = "SELECT * FROM Role ORDER BY id DESC";
         foreach ($conn->query($sql)as $row)
         {
-            echo "<tr>";
-            echo "<td>".$row["RjobTitle"]."</td>";
-            echo "<td>".$row["RclassName"]."</td>";
-            echo "<td>".$row["RclassCRN"]."</td>";
-            echo "</tr>";
+
+                    echo "<tr>";
+                    echo "<td>".$row["RjobTitle"]."</td>";
+                    echo "<td>".$row["RclassName"]."</td>";
+                    echo "<td>".$row["RclassCRN"]."</td>";
+                    // Create Update and Delete
+                    echo '<td width=250>';
+                    echo '<a class="btn btn-success" href="./update.php?id='.$row['id'].'">Update</a>';
+                    echo ' ';
+                    echo '<a class="btn btn-danger" href="./delete.php?id='.$row['id'].'">Delete</a>';
+                    echo '</td>';
+                    echo "</tr>";
         }
 
 
