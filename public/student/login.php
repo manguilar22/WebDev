@@ -36,7 +36,7 @@ if (!empty($_POST)){
             $_SESSION["logged_in"] = true;
             $_SESSION["status"] = "admin";
             //echo "Admin Found";
-            header("Location: ../jobs/adminPage.php");
+            header("Location: ../jobs/admin/adminPage.php");
         } elseif ($resultCoordinator > 0) {
             $_SESSION["user"] = $input_username;
             $_SESSION["logged_in"] = true;

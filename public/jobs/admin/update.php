@@ -7,7 +7,7 @@ $jobTitle = $_POST["jjobTitle"];
 $className = $_POST["cclassName"];
 $classCRN = $_POST["cclassCRN"];
 
-include "../oop/databaseConnect.php";
+require_once "../oop/databaseConnect.php";
 $database = new DatabaseConnector();
 $conn = $database->DOCKER_CONNECT("root","password","s20am_team10");
 

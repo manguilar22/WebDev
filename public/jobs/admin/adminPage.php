@@ -1,6 +1,6 @@
 <?php session_start(); ?>
 <?php
-    require "../oop/databaseConnect.php";
+    require "../../oop/databaseConnect.php";
     $database = new DatabaseConnector();
     $conn = $database -> DOCKER_CONNECT("root","password","s20am_team10");
 ?>

@@ -4,7 +4,7 @@
 
 $id = $_GET["id"];
 
-include "../oop/databaseConnect.php";
+require_once "../../oop/databaseConnect.php";
 $database = new DatabaseConnector();
 $conn = $database->DOCKER_CONNECT("root","password","s20am_team10");
 
