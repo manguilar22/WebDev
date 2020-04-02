@@ -21,7 +21,7 @@ $conn->query($sql); //->free();
     <title>Delete</title>
 </head>
 <body>
-<h1> <a href="/jobs/adminPage.php">Deleted</a></h1>
+<h1> <a href="adminPage.php">Deleted</a></h1>
 </body>
 
 </html>

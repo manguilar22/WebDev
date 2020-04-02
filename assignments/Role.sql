@@ -14,4 +14,22 @@
  ) ENGINE=Innodb;
 
 
- INSERT INTO Role(RjobTitle,RclassName,RclassCRN) VALUES ("IA","Adv. Object Oriented Programming","11111");
+	INSERT INTO Role (
+		RjobTitle,
+		RclassName,
+		RclassCRN
+	) VALUES (
+		"TA",
+		"Database Management",
+		"27411"
+	),
+	(
+		"IA",
+		"Database Management",
+		"27411"
+	),
+	(
+		"TA",
+		"Computer Arch.",
+		"26014"
+	);

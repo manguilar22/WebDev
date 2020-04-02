@@ -53,3 +53,21 @@ INSERT INTO SuperUsers(
     "coor1",
     "COORDINATOR"
 );
+
+/*
+    Coordinator 2
+ */
+
+ INSERT INTO SuperUsers(
+    Sfname,
+    Slname,
+    Susername,
+    Spassword,
+    Sstatus
+) VALUES (
+    "Ms.",
+    "Important",
+    "coor2",
+    "coor2",
+    "COORDINATOR"
+);

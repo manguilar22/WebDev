@@ -44,3 +44,51 @@ INSERT INTO Student(
                          3.33,
                          "user1"
                     );
+
+/*
+    Student Records
+ */
+
+ INSERT INTO Student(
+                    SfirstName,
+                    SmiddleName,
+                    SlastName,
+                    Semail,
+                    Sclass,
+                    SResidencyStatus,
+                    SmajorGPA,
+                    SoverallGPA,
+                    Spassword
+                    ) VALUES (
+                        "user",
+                        "N/A",
+                        "user",
+                        "user",
+                        "undergraduate",
+                        "in-state",
+                         3.33,
+                         3.33,
+                         "user1"
+                    ),
+		            (
+			            "user2",
+			            "N/A",
+			            "user2",
+			            "user2",
+                        "undergraduate",
+                        "in-state",
+                        3.40,
+                        2.22,
+                        "user2"
+                    ),
+                    (
+                        "user3",
+                        "N/A",
+                    	"user3",
+                        "user3",
+                        "undergraduate",
+                        "in-state",
+                        3.40,
+                        2.22,
+                        "user3"
+                    );
