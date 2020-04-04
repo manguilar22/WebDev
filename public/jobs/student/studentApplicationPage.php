@@ -1,7 +1,7 @@
 <?php session_start(); ?>
 <!-- Maintain Applicant's Information-->
 <?php
-require_once("../oop/databaseConnect.php");
+require_once "../../oop/databaseConnect.php";
 
 $databaseConnector = new DatabaseConnector();
 $conn = $databaseConnector -> DOCKER_CONNECT("root","password","s20am_team10");

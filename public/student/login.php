@@ -30,7 +30,7 @@ if (!empty($_POST)){
             $_SESSION['logged_in'] = true;
             $_SESSION["status"] = "student";
             //echo"User found";
-            header("Location: ../jobs/studentApplicationPage.php");
+            header("Location: ../jobs/student/studentApplicationPage.php");
         } elseif ($resultAdmin > 0) {
             $_SESSION["user"] = $input_username;
             $_SESSION["logged_in"] = true;
@@ -42,7 +42,7 @@ if (!empty($_POST)){
             $_SESSION["logged_in"] = true;
             $_SESSION["status"] = "coordinator";
             //echo "Coordinator Found";
-            header("Location: ../jobs/coordinatorPage.php");
+            header("Location: ../jobs/coordinator/coordinatorPage.php");
         }else {
             echo "User does not exist. <br/>";
             echo "Click below and create an account. <br/>";
