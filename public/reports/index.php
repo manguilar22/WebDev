@@ -25,7 +25,7 @@
 
     echo "<h4>Major GPA of Candidates:".$fetchOne["majorGPA"]."</h4>";
     echo "<h4>Overall GPA of Candidates:".$fetchOne["overallGPA"]."</h4>";
-    
+
 
     ?>
 

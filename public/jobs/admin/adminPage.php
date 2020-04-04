@@ -16,7 +16,7 @@
 <h1> Welcome Admin </h1>
 
 
-<p><a href="../reports/index.php">Generate Reports</a></p>
+<p><a href="../../reports/index.php">Generate Reports</a></p>
 
 
 <!-- Create a Job Role as a Admin -->
