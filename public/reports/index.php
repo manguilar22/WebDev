@@ -10,7 +10,7 @@
 
 <body>
 
-<h1>Some Report</h1>
+<h1>Reports</h1>
 
 <?php
     include "../oop/databaseConnect.php";
@@ -22,9 +22,13 @@
 
     $fetchOne = $conn->query($summaryOne)->fetch_array();
 
+    $summaryTwo = "SELECT COUNT(*) AS 'total' FROM Student";
+    $fetchTwo = $conn->query($summaryTwo)->fetch_array();
 
-    echo "<h4>Major GPA of Candidates:".$fetchOne["majorGPA"]."</h4>";
-    echo "<h4>Overall GPA of Candidates:".$fetchOne["overallGPA"]."</h4>";
+    echo "<p>Registered students: ".$fetchTwo["total"]."</p>";
+    echo "<h4> Averages </h4>";
+    echo "<p>Major GPA of Candidates: ".$fetchOne["majorGPA"]."</p>";
+    echo "<p>Overall GPA of Candidates: ".$fetchOne["overallGPA"]."</p>";
 
 
     ?>
