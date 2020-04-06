@@ -34,7 +34,22 @@
     ?>
 
 
+<h4>Graphics</h4>
+
+<?php
+    require_once "../oop/faas.php";
+    $wolfram = new Wolfram();
+
+
+    $picture = $wolfram->WolframCloudCall(10,20,30,40);
+
+    $imageData = base64_encode($picture);
+
+
+    ?>
+<img src="data:image/png;base64,<?php echo $imageData?>">
+
 </body>
 
-
 </html>
+
