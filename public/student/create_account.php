@@ -14,6 +14,7 @@ $lName = $sanitizer->cleanInput($_POST["lastName"]);
 $uEmail = $sanitizer->cleanInput($_POST["utepEmail"]);
 $class = $_POST["classification"];
 $status = isset($_POST["status"]) ?  $_POST["status"] : "N/A";
+$gender = isset($_POST["gender"]) ? $_POST["gender"] : "N";
 $majorGPA = isset($_POST["majorGPA"]) ? $sanitizer->checkGPA($_POST["majorGPA"]) : 0.0;
 $overallGPA = isset($_POST["overallGPA"]) ? $sanitizer->checkGPA($_POST["overallGPA"]) : 0.0;
 $password = $_POST["password"];
@@ -31,6 +32,7 @@ if(isset($submitButton))
                     Semail,
                     Sclass,
                     SResidencyStatus,
+                    Sgender,
                     SmajorGPA,
                     SoverallGPA,
                     Spassword
@@ -42,6 +44,7 @@ if(isset($submitButton))
             '$uEmail',
             '$class',
             '$status',
+            '$gender',
             '$majorGPA',
             '$overallGPA',
             '$password') ";
@@ -101,6 +104,11 @@ if(isset($submitButton))
             <option value="In-state">Instate</option>
             <option value="International">International</option>
             <option value="Out-state">Out of State</option>
+        </select> <br/>
+        <label>Gender</label> <br/>
+        <select class="form-control" name="gender">
+            <option value="M">Male</option>
+            <option value="F">Female</option>
         </select> <br/>
         <label>Major GPA</label> <br/>
         <input class="form-control" type="text" name="majorGPA" placeholder="Major GPA"/> <br/>
