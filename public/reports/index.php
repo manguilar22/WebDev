@@ -41,13 +41,13 @@
     $wolfram = new Wolfram();
 
 
-    $picture = $wolfram->WolframCloudCall(10,20,30,40);
+    //$picture = $wolfram->WolframCloudCall(10,20,30,40);
 
-    $imageData = base64_encode($picture);
+    //$imageData = base64_encode($picture);
 
 
-    ?>
-<img src="data:image/png;base64,<?php echo $imageData?>">
+?>
+<img src="data:image/png;base64,<?php echo ""?>">
 
 </body>
 

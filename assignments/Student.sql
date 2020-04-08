@@ -14,6 +14,7 @@ CREATE TABLE Student (
     Semail VARCHAR(20),
     Sclass VARCHAR(20),
     SResidencyStatus VARCHAR(20),
+    Sgender VARCHAR(1),
     SmajorGPA DECIMAL(4,2),
     SoverallGPA DECIMAL(4,2),
     Spassword VARCHAR(100),
@@ -30,6 +31,7 @@ INSERT INTO Student(
                     Semail,
                     Sclass,
                     SResidencyStatus,
+                    Sgender,
                     SmajorGPA,
                     SoverallGPA,
                     Spassword
@@ -40,6 +42,7 @@ INSERT INTO Student(
                         "user",
                         "undergraduate",
                         "in-state",
+                        "F",
                          3.33,
                          3.33,
                          "user1"
@@ -56,6 +59,7 @@ INSERT INTO Student(
                     Semail,
                     Sclass,
                     SResidencyStatus,
+                    Sgender,
                     SmajorGPA,
                     SoverallGPA,
                     Spassword
@@ -66,6 +70,7 @@ INSERT INTO Student(
                         "user",
                         "undergraduate",
                         "in-state",
+                        "F",
                          3.33,
                          3.33,
                          "user1"
@@ -77,6 +82,7 @@ INSERT INTO Student(
 			            "user2",
                         "undergraduate",
                         "in-state",
+                        "M",
                         3.40,
                         2.22,
                         "user2"
@@ -88,6 +94,7 @@ INSERT INTO Student(
                         "user3",
                         "undergraduate",
                         "in-state",
+                        "F",
                         3.40,
                         2.22,
                         "user3"
