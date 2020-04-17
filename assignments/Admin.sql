@@ -17,7 +17,6 @@ CREATE TABLE SuperUsers (
 
 /*  ADMIN or COORDINATOR, depending on role permissions are granted*/
 
-
 /**
     ADMIN ROLE
 */
@@ -71,3 +70,4 @@ INSERT INTO SuperUsers(
     "coor2",
     "COORDINATOR"
 );
+

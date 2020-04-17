@@ -39,6 +39,20 @@
             return $connection;
         }
 
+        public function SETUP_DATABASE()
+        {
+            $deployEnvironment = getenv("DEPLOY");
+
+            if($deployEnvironment === "DOCKER")
+            {
+                return $this->DOCKER_CONNECT("root","password","s20am_team10");
+            }elseif ($deployEnvironment === "DOCKER_COMPOSE")
+            {
+                return $this->DOCKER_CONNECT("root","password","s20am_team10");
+            }
+            return $this->UTEP_CONNECT();
+        }
+
 
 	} 
 

@@ -5,8 +5,9 @@ require_once "../oop/safetyChecks.php";
 $sanitizer = new Sanitizer();
 
 $databaseConnector = new DatabaseConnector();
-//$conn = $databaseConnector -> DOCKER_CONNECT("root","password","s20am_team10");
-$conn = $databaseConnector -> UTEP_CONNECT();
+$conn=$databaseConnector->SETUP_DATABASE();
+
+
 
 $fName = $sanitizer->cleanInput($_POST["firstName"]);
 $mName = isset($_POST["middleName"])?$_POST["middleName"]:"N/A";
@@ -59,14 +60,14 @@ if(isset($submitButton))
     } elseif ($conn -> query($sql) === TRUE)
     {
         echo "Successful Submission";
-    } elseif ($conn->error){
+    } elseif ($conn->error)
+    {
         echo "Account already exists because of the email.";
-    } else {
+    } else
+        {
         echo "[-] An error has occurred:\t".$conn->error;
     }
 }
-
-
 
 ?>
 
@@ -81,10 +82,10 @@ if(isset($submitButton))
 
 <body>
 
-<h1>Create an Account</h1>
+    <h1>Create an Account</h1>
 
-<!-- Student Account -->
-<div class="studentForm">
+    <!-- Student Account -->
+    <div class="studentForm">
     <form method="post" action="create_account.php">
         <label>Name</label> <br/>
         <input class="form-control" type="text" name="firstName" placeholder="First Name Goes Here"/> <br/>
@@ -118,7 +119,7 @@ if(isset($submitButton))
         <input class="form-control" type="password" name="password" placeholder="type a secret password"/><br/>
         <input class="btn btn-primary" name='submit' type="submit" value="Create Account"/>
     </form>
-</div>
+    </div>
 
 </body>
 

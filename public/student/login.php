@@ -1,10 +1,9 @@
 <?php session_start(); ?>
 <?php
 
-require_once("../oop/databaseConnect.php");
+require_once "../oop/databaseConnect.php";
 $databaseConnector = new DatabaseConnector();
-$conn = $databaseConnector -> DOCKER_CONNECT("root","password","s20am_team10");
-//$conn = $databaseConnector->UTEP_CONNECT();
+$conn=$databaseConnector->SETUP_DATABASE();
 $_SESSION['logged_in'] = false;
 
 
@@ -25,24 +24,25 @@ if (!empty($_POST)){
         $resultAdmin = $conn -> query($findAdmin) -> fetch_array()[0];
         $resultCoordinator = $conn -> query($findCoordinator) -> fetch_array()[0];
 
+        // Login Scheme
         if ($resultStudent > 0 ) {
             $_SESSION['user'] = strval($input_username);
             $_SESSION['logged_in'] = true;
             $_SESSION["status"] = "student";
             //echo"User found";
-            header("Location: ../jobs/student/studentApplicationPage.php");
+            header("Location: ../jobs/studentApplicationPage.php");
         } elseif ($resultAdmin > 0) {
             $_SESSION["user"] = $input_username;
             $_SESSION["logged_in"] = true;
             $_SESSION["status"] = "admin";
             //echo "Admin Found";
-            header("Location: ../jobs/admin/adminPage.php");
+            header("Location: ../jobs/adminPage.php");
         } elseif ($resultCoordinator > 0) {
             $_SESSION["user"] = $input_username;
             $_SESSION["logged_in"] = true;
             $_SESSION["status"] = "coordinator";
             //echo "Coordinator Found";
-            header("Location: ../jobs/coordinator/coordinatorPage.php");
+            header("Location: ../jobs/coordinatorPage.php");
         }else {
             echo "User does not exist. <br/>";
             echo "Click below and create an account. <br/>";

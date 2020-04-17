@@ -1,8 +1,8 @@
 <?php session_start(); ?>
 <?php
-    require "../../oop/databaseConnect.php";
-    $database = new DatabaseConnector();
-    $conn = $database -> DOCKER_CONNECT("root","password","s20am_team10");
+    require_once "../oop/databaseConnect.php";
+    $databaseConnector = new DatabaseConnector();
+    $conn=$databaseConnector->SETUP_DATABASE();
 ?>
 <!DOCTYPE html>
 <html>
@@ -16,7 +16,7 @@
 <h1> Welcome Admin </h1>
 
 
-<p><a href="../../reports/index.php">Generate Reports</a></p>
+<p><a href="../reports/index.php">Generate Reports</a></p>
 
 
 <!-- Create a Job Role as a Admin -->
@@ -44,6 +44,7 @@ $classCRN = $_POST["classCRN"];
 
 $predicate = empty($className) && empty($classCRN);
 
+// !(P & Q) & R
 if( !$predicate && isset($_POST["submit"]) )
 {
     $sql = "INSERT INTO Role(RjobTitle,RclassName,RclassCRN) VALUES (
