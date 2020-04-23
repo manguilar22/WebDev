@@ -3,7 +3,8 @@
 
 require_once "../oop/databaseConnect.php";
 $databaseConnector = new DatabaseConnector();
-$conn=$databaseConnector->SETUP_DATABASE();
+$conn = $databaseConnector -> DOCKER_CONNECT("root","password","s20am_team10");
+//$conn = $databaseConnector->UTEP_CONNECT();
 $_SESSION['logged_in'] = false;
 
 
@@ -44,8 +45,8 @@ if (!empty($_POST)){
             //echo "Coordinator Found";
             header("Location: ../jobs/coordinatorPage.php");
         }else {
-            echo "User does not exist. <br/>";
-            echo "Click below and create an account. <br/>";
+			      error_reporting(0);
+            $errorMsg = "<div class='displayError'>*User does not exist. Click below and create an account. <br/></div>";
         }
     }
 }
@@ -54,24 +55,43 @@ if (!empty($_POST)){
 <!DOCTYPE HTML>
 <head>
     <title>Login</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
+	<!--
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/> -->
+	<link rel="stylesheet" href="../css/login_style.css"/>
 
 </head>
 <body>
-<h1>USER LOG IN</h1>
-<div id="menu">
-    <form action="login.php" method="post">
-        <label>User Name</label>
-        <input class="form-control" type="text" name="username">
-        <small class="form-text text-muted">use UTEP email</small>
-        <label>Password</label>
-        <input class="form-control" type="password" name="password"> <br/> <!-- TODO: -->
-        <button class="btn btn-primary" name="Submit" type="submit">Submit</button>
-    </form>
+
+<div class="box">
+	<img src="../img/login_logo.png" width="500px" height="361px">
+	<div class="userInput">
+		<h1>USER LOG IN</h1>
+		<div>
+			<form action="login.php" method="post">
+				<!-- <label>User Name</label> -->
+				<input class="form-control" type="text" name="username" placeholder="username">
+				<!-- <small class="form-text text-muted">use UTEP email</small> -->
+				<!-- <label>Password</label> -->
+				</br><input class="form-control" type="password" name="password" placeholder="password"> <br/>
+				<!-- TODO: -->
+				<button class="btn btn-primary" name="Submit" type="submit">Submit</button>
+			</form>
+		</div>
+	</div>
+
+	<!-- DISPLAY ERROR MESSAGE HERE IF ANY -->
+	<?php
+		error_reporting(0);
+		echo $errorMsg
+	?>
+
+	<div class="links">
+		<a href="../index.php" style="float:left">Back</a>
+		<a href="./create_account.php" style="float:right">Create Account</a>
+	</div>
 </div>
-<a href="./create_account.php">Create Account Here</a><br/>
-</div>
-<a href="../index.php">Back</a><br/>
+
+
 
 </body>
 </html>

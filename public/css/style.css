@@ -1,0 +1,71 @@
+.navigation ol {
+    list-style-type: square;
+}
+
+body{
+	background-image: url("../img/utep_bg.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	margin:0;
+}
+h1{
+	font-family:RobotoCondensed-Bold;
+}
+
+.header {
+  padding: 1px;
+  text-align: center;
+  background: #041E42;
+  color: white;
+  font-size: 28px;
+}
+
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid #e7e7e7;
+  background-color: white;
+}
+
+li {
+  float: right;
+}
+
+li a {
+  display: block;
+  color: #041E42;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-family:OpenSans-SemiBold;
+  font-size:13px;
+}
+
+li a:hover:not(.active) {
+  background-color: #ddd;
+}
+
+li a.active {
+  color: white;
+  background-color: white;
+}
+
+.navigation-bar img{
+	float:left;
+	width:192px;
+	height:192px;
+}
+
+@font-face{
+	font-family: RobotoCondensed-Bold;
+	src: url(fonts/RobotoCondensed-Bold.ttf);
+}
+
+@font-face{
+	font-family: OpenSans-SemiBold;
+	src: url(fonts/OpenSans-SemiBold.ttf);
+}

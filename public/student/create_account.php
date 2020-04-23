@@ -5,9 +5,8 @@ require_once "../oop/safetyChecks.php";
 $sanitizer = new Sanitizer();
 
 $databaseConnector = new DatabaseConnector();
-$conn=$databaseConnector->SETUP_DATABASE();
-
-
+$conn = $databaseConnector -> DOCKER_CONNECT("root","password","s20am_team10");
+//$conn = $databaseConnector -> UTEP_CONNECT();
 
 $fName = $sanitizer->cleanInput($_POST["firstName"]);
 $mName = isset($_POST["middleName"])?$_POST["middleName"]:"N/A";
@@ -37,7 +36,7 @@ if(isset($submitButton))
                     SmajorGPA,
                     SoverallGPA,
                     Spassword
-            ) 
+            )
             VALUES (
             '$fName',
             '$mName',
@@ -60,67 +59,108 @@ if(isset($submitButton))
     } elseif ($conn -> query($sql) === TRUE)
     {
         echo "Successful Submission";
-    } elseif ($conn->error)
-    {
+    } elseif ($conn->error){
         echo "Account already exists because of the email.";
-    } else
-        {
+    } else {
         echo "[-] An error has occurred:\t".$conn->error;
     }
 }
-
 ?>
-
 <!DOCTYPE html>
 <html>
 
 <head>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
-    <link rel="stylesheet" href="../css/student.css"/>
-    <title>Account</title>
+	<!--
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/> -->
+    <link rel="stylesheet" href="../css/create_account_style.css"/>
+    <title>Create Account</title>
 </head>
 
 <body>
 
-    <h1>Create an Account</h1>
+<!-- UTEP LOGO ON LEFT SIDE OF HEADER-->
+<div class="navigation-bar">
+		<img src="../img/utep_logo.png">
+</div>
 
-    <!-- Student Account -->
+<!-- TITLE IN HEADER -->
+<div class="header">
+    <h1>CREATE AN ACCOUNT</h1>
+</div>
+
+<!-- NAGIVATION BAR -->
+<div class="navigation">
+	<ul>
+		<li><a href="login.php">LOG IN</a></li>
+		<li><a href="../index.php">BACK</a></li>
+	</ul>
+</div>
+
+
+    <!-- Student Account FORM INSIDE OF BOX-->
+	<div class="box">
     <div class="studentForm">
     <form method="post" action="create_account.php">
-        <label>Name</label> <br/>
-        <input class="form-control" type="text" name="firstName" placeholder="First Name Goes Here"/> <br/>
-        <input class="form-control" type="text" name="middleName" placeholder="Middle Name goes here. Type N/A if not applicable"/> <br/>
-        <input class="form-control" type="text" name="lastName" placeholder="Last Name Goes Here"/> <br/>
-        <label>UTEP Email</label> <br/>
-        <input class="form-control" type="text" name="utepEmail" placeholder="Use student email, please"/> <br/>
-        <label>Classification</label> <br/>
+        <!-- NAME INFO -->
+		<!-- IN LINE INFORMATION FOR NAME -->
+		<div class="horizontalBox">
+			<input class="form-control" type="text" name="firstName" placeholder="First Name"/>
+		</div>
+		<div class="horizontalBox">
+			<input class="form-control" type="text" name="middleName" placeholder="Middle Name"/>
+		</div>
+		<div class="horizontalBox">
+			<input class="form-control" type="text" name="lastName" placeholder="Last Name"/>
+		</div>
+
+        <!-- UTEP EMAIL -->
+        <input class="form-control" type="text" name="utepEmail" placeholder="UTEP e-mail"/> </br>
+
+		<!-- CLASSIFICATION -->
+
         <!-- SELECT GOES HERE -->
         <select class="form-control" name="classification">
+			<option selected disabled>Classification</option>
             <option value="Undergraduate">Undergraduate</option>
             <option value="Graduate">Graduate</option>
             <option value="Doctorate">Doctorate</option>
         </select> <br/>
-        <label>Residency Status</label> <br/>
+
+		<!-- RESIDENCY -->
+
         <select class="form-control" name="status">
+			<option selected disabled>Residency</option>
             <option value="In-state">Instate</option>
             <option value="International">International</option>
             <option value="Out-state">Out of State</option>
         </select> <br/>
-        <label>Gender</label> <br/>
+
+		<!-- GENDER -->
+
         <select class="form-control" name="gender">
+			<option selected disabled>Gender</option>
             <option value="M">Male</option>
             <option value="F">Female</option>
         </select> <br/>
-        <label>Major GPA</label> <br/>
-        <input class="form-control" type="text" name="majorGPA" placeholder="Major GPA"/> <br/>
-        <label>Overall GPA</label> <br/>
-        <input class="form-control" type="text" name="overallGPA" placeholder="Overall GPA"/> <br/>
-        <label>Password</label> <br/>
-        <input class="form-control" type="password" name="password" placeholder="type a secret password"/><br/>
-        <input class="btn btn-primary" name='submit' type="submit" value="Create Account"/>
-    </form>
-    </div>
 
+		<!-- MAPE GPA SIDE BY SIDE TO EACH OTHER -->
+		<div class="horizontalBox">
+			<!-- MAJOR GPA TEXT-->
+			<input class="form-control" type="text" name="majorGPA" placeholder="Major GPA"/>
+		</div>
+		<div class="horizontalBox">
+			<!-- OVERALL GPA TEXT -->
+			<input class="form-control" type="text" name="overallGPA" placeholder="Overall GPA"/> <br/>
+        </div>
+
+		<!-- USER CREATES PASSWORD -->
+        <input class="form-control" type="password" name="password" placeholder="Create a Password"/><br/>
+        <input class="btn btn-primary" name='submit' type="submit" value="Create Account"/>
+
+    </form>
+	</br></br></br>
+    </div>
+	</div> </br></br>
 </body>
 
 </html>

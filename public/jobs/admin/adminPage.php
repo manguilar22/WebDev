@@ -1,10 +1,10 @@
 <?php session_start(); ?>
 <?php
-    require_once "../oop/databaseConnect.php";
+    require "../../oop/databaseConnect.php";
     $database = new DatabaseConnector();
     $conn = $database -> DOCKER_CONNECT("root","password","s20am_team10");
-    //$conn = $database ->UTEP_CONNECT();
-?>
+
+    ?>
 <!DOCTYPE html>
 <html>
 
@@ -17,7 +17,7 @@
 <h1> Welcome Admin </h1>
 
 
-<p><a href="../reports/index.php">Generate Reports</a></p>
+<p><a href="../../reports/index.php">Generate Reports</a></p>
 
 
 <!-- Create a Job Role as a Admin -->
@@ -92,9 +92,9 @@ if( !$predicate && isset($_POST["submit"]) )
                     echo "<td>".$row["RclassCRN"]."</td>";
                     // Create Update and Delete
                     echo '<td width=250>';
-                    echo '<a class="btn btn-success" href="./update.php?id='.$row['id'].'">Update</a>';
+                    echo '<a class="btn btn-success" href="update.php?id='.$row['id'].'">Update</a>';
                     echo ' ';
-                    echo '<a class="btn btn-danger" href="./delete.php?id='.$row['id'].'">Delete</a>';
+                    echo '<a class="btn btn-danger" href="delete.php?id='.$row['id'].'">Delete</a>';
                     echo '</td>';
                     echo "</tr>";
         }
@@ -103,6 +103,7 @@ if( !$predicate && isset($_POST["submit"]) )
         ?>
         </tbody>
     </table>
+
 </div>
 
 </body>

@@ -1,0 +1,244 @@
+
+<?php
+require_once "../../oop/databaseConnect.php";
+$db = new DatabaseConnector();
+$conn = $db->DOCKER_CONNECT("root","password","s20am_team10");
+if (isset($_GET["id"]))
+{
+    $id = $_GET["id"];
+    $update = true;
+
+    $sql = "SELECT * FROM Role WHERE id LIKE '$id'";
+    $record = $conn->query($sql)->fetch_array();
+
+    if ( sizeof($record) > 1 )
+    {
+        $n = $record;
+        $jobTitle = $n["RjobTitle"];
+        $jobClass = $n["RclassName"];
+        $jobCRN = $n["RclassCRN"];
+    }
+
+    if (isset($_POST['save'])) {
+        $jobTitle = $_POST['jobTitle'];
+        $className = $_POST['jobClass'];
+        $classCRN = $_POST["jobCRN"];
+
+        $conn->query( "INSERT INTO Role (RjobTitle,RclassName,RclassCRN) VALUES ('$jobTitle', '$className','$classCRN')");
+        header('location: adminPage.php');    }
+
+
+    if (isset($_POST['update'])) {
+        $jobTitle = $_POST['jobTitle'];
+        $className = $_POST['jobClass'];
+        $classCRN = $_POST["jobCRN"];
+
+        $editQuery = "UPDATE Role SET RjobTitle='$jobTitle',RclassName='$className',RclassCRN='$classCRN' WHERE id LIKE '$id'";
+        $conn->query($editQuery);
+        header('location: adminPage.php');
+
+
+}
+
+}
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+<form method="post" action="update.php" >
+
+    <input type="hidden" name="id" value="<?php echo $id; ?>">
+
+    <div class="input-group">
+        <label>Position</label>
+        <input type="text" name="jobTitle" placeholder="<?php echo $jobTitle; ?>">
+    </div>
+    <div class="input-group">
+        <label>Class Name</label>
+        <input type="text" name="jobClass" placeholder="<?php echo $jobClass; ?>">
+    </div>
+    <div class="input-group">
+        <label>Class CRN</label>
+        <input type="text" name="jobCRN" placeholder="<?php echo $jobCRN; ?>">
+    </div>
+    <div class="input-group">
+
+        <?php if ($update == true): ?>
+            <button class="btn" type="submit" name="update" style="background: #556B2F;" >update</button>
+        <?php else: ?>
+            <button class="btn" type="submit" name="save" >Save</button>
+        <?php endif ?>
+    </div>
+</form>
+
+<?php
+
+
+
+
+?>
+
+
+</body>
+</html>
+
+----------------------------------------
+<?php session_start(); ?>
+<?php
+    require "../../oop/databaseConnect.php";
+    $database = new DatabaseConnector();
+    $conn = $database -> DOCKER_CONNECT("root","password","s20am_team10");
+
+    ?>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Admin</title>
+</head>
+
+<body>
+
+<h1> Welcome Admin </h1>
+
+
+<p><a href="../../reports/index.php">Generate Reports</a></p>
+
+
+<!-- Create a Job Role as a Admin -->
+<h4>Create Role</h4>
+<div class="createRole">
+<form action="adminPage.php" method="post">
+
+    <label for="Student Title"></label>
+    <select name="jobTitle">
+        <option value="IA">Instructional Assistant (IA)</option>
+        <option value="TA">Teacher Assistant (TA)</option>
+        <option value="PL">Peer Leader</option>
+    </select>
+    <label for="UTEP Class Name"></label>
+    <input type="text" name="className" placeholder="UTEP Class Name"/>
+    <label for="Class CRN"></label>
+    <input type="text" name="classCRN" placeholder="UTEP Class CRN"/>
+    <input type="submit" name="submit" placeholder="Submit Job"/>
+</form>
+<?php
+
+$jobTitle = $_POST["jobTitle"];
+$className = $_POST["className"];
+$classCRN = $_POST["classCRN"];
+
+$predicate = empty($className) && empty($classCRN);
+
+if( !$predicate && isset($_POST["submit"]) )
+{
+    $sql = "INSERT INTO Role(RjobTitle,RclassName,RclassCRN) VALUES (
+            '$jobTitle',
+            '$className',
+            '$classCRN'
+            )";
+    if ($conn->query($sql)) { echo "submit";}
+    else { echo "CRN Already Used"; }
+
+} elseif ($predicate)
+{
+    echo "Empty Values Not Accepted";
+}
+
+
+
+
+?>
+</div>
+
+
+<!-- All Jobs in Database Table -->
+<h4>Show Jobs</h4>
+<div class="showTable">
+    <table>
+        <thead>
+            <th>Job Title</th>
+            <th>Class Name</th>
+            <th>CRN</th>
+            <th>Delete</th>
+        </thead>
+        <tr/>
+        <tbody>
+        <?php
+
+
+        $sql = "SELECT * FROM Role ORDER BY id DESC";
+        foreach ($conn->query($sql)as $row)
+        {
+
+                    echo "<tr>";
+                    echo "<td>".$row["RjobTitle"]."</td>";
+                    echo "<td>".$row["RclassName"]."</td>";
+                    echo "<td>".$row["RclassCRN"]."</td>";
+                    // Create Update and Delete
+                    echo '<td width=250>';
+                    echo '<a class="btn btn-success" href="./update.php?id='.$row['id'].'">Update</a>';
+                    echo ' ';
+                    echo '<a class="btn btn-danger" href="./delete.php?id='.$row['id'].'">Delete</a>';
+                    echo '</td>';
+                    echo "</tr>";
+        }
+
+
+        ?>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
+---------------------------------------------------------
+<?php
+
+
+$id = $_GET["id"];
+$jobTitle = $_POST["jjobTitle"];
+$className = $_POST["cclassName"];
+$classCRN = $_POST["cclassCRN"];
+
+require_once "../../oop/databaseConnect.php";
+$database = new DatabaseConnector();
+$conn = $database->DOCKER_CONNECT("root","password","s20am_team10");
+
+if ( isset($_POST["submit"]) )
+{
+    $originalQ = "SELECT * FROM Role WHERE id LIKE '$id'";
+    $original = $conn->query($originalQ)->fetch_array();
+
+    $editQuery = "UPDATE Role SET RjobTitle='$jobTitle',RclassName='$className',RclassCRN='$classCRN' WHERE id LIKE '$id'";
+    $conn->query($editQuery);
+    echo "Done Something";
+}
+
+?>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Delete</title>
+</head>
+<body>
+<h1>Editing Record #<?php echo $id?></h1>
+<h1> <a href="/jobs/admin/adminPage.php">Update</a></h1>
+<form action="update.php" method="post">
+    <input type="text" name="jjobTitle" placeholder="job title"/>
+    <input type="text" name="cclassName" placeholder="class name"/>
+    <input type="text" name="cclassCRN" placeholder="class crn"/>
+    <input type="submit" name="submit" placeholder="submit"/>
+</form>
+
+</body>
+
+</html>
