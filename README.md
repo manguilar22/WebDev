@@ -14,3 +14,20 @@
 * **public/** 
 * **Dockerfile** 
 * **docker-compose.yaml** 
+
+### Deploy 
+
+#### Linux / Unix 
+
+```bash 
+$ export MYSQL_HOST=<IP_ADDRESS>
+$ export MYSQL_USER=<USERNAME>
+$ export MYSQL_PASSWORD=<PASSWORD>
+$ export MYSQL_DATABASE=<DATABASE NAME> 
+```
+
+Start php-cli
+
+```bash
+$ php -t public/ -S 127.0.0.1:8080 
+```

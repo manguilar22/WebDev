@@ -33,7 +33,10 @@ $gender     = $studentData["sgender"];
 
 <head>
 	<!-- LINK STYLESHEET -->
-	<link rel="stylesheet" href="../css/student_profile_style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/design_style.css"/>
+    <link rel="stylesheet" href="../css/student_profile_style.css"/>
+    <title>Profile</title>
 </head>
 
 <body>
@@ -41,6 +44,47 @@ $gender     = $studentData["sgender"];
 <div class="box">
 <p>Hi <?php echo $firstName . " " . $lastName ?></p>
 </div>
+
+
+<!-- UTEP LOGO ON LEFT SIDE OF HEADER-->
+<div class="navigation-bar">
+    <img src="../css/img/utep_logo.png">
+</div>
+<!-- TITLE IN HEADER -->
+<div class="header">
+    <h1>STUDENT PROFILE</h1>
+</div>
+
+<!-- NAGIVATION BAR -->
+<div class="navigation">
+    <ul>
+        <li><a href="../student/login.php">LOG OUT</a></li>
+        <li><a href="../index.php">BACK</a></li>
+    </ul>
+</div>
+
+<div class="left">
+    <h3>RESOURCES</h3><hr></hr>
+    <div class="leftBox">
+        <div class = "sidenav">
+            <div class="links">
+                <a href="../application.php">Fill Application</a></br>
+            </div>
+            <div class="links">
+                <a href="./create_account.php">View Status</a>
+            </div>
+            <div class="links">
+                <a href="./create_account.php">Edit Profile</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="div1">
+
+</div>
+
+
 
 </body>
 </html>

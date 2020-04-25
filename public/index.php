@@ -4,14 +4,14 @@
     <!-- Bootstrap
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/> -->
     <!-- CSS -->
-    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
     <meta charset="UTF-8">
     <title>UTEP</title>
 </head>
 <body>
 <!-- UTEP LOGO ON LEFT SIDE OF HEADER-->
 <div class="navigation-bar">
-		<img src="img/utep_logo.png">
+		<img src="css/img/utep_logo.png">
 </div>
 <!-- TITLE IN HEADER -->
 <div class="header">

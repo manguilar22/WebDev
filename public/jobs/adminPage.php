@@ -81,7 +81,7 @@ if( !$predicate && isset($_POST["submit"]) )
         <?php
 
 
-        $sql = "SELECT * FROM Role ORDER BY id DESC";
+        $sql = "SELECT * FROM role ORDER BY id DESC";
         foreach ($conn->query($sql)as $row)
         {
 
