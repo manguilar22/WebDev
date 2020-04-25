@@ -12,5 +12,6 @@ ENV MYSQL_PASSWORD password
 ENV MYSQL_DATABASE s20am_team10
 
 RUN docker-php-ext-install mysqli
+
 EXPOSE  80
 CMD ["php","-S","0.0.0.0:80"]

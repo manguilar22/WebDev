@@ -10,6 +10,9 @@ services:
       dockerfile: Dockerfile
     environment:
       MYSQL_HOST: mysqlDB #172.17.0.2 #AUTOMATE
+      MYSQL_USER: root
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: s20am_team10
     depends_on:
       - mysqlDB
     ports:
