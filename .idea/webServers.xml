@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="dbc4724d-fd67-42e4-866c-53dd2b2f17c2" name="UTEP" url="http://cssrvlab01.utep.edu/Classes/cs4342/Team10_am/">
+        <fileTransfer host="cssrvlab01.utep.edu" port="21" rootFolder="/cs4342/Team10_am">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

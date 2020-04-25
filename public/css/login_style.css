@@ -116,12 +116,12 @@ a{
 
 @font-face{
 	font-family: RobotoCondensed-Bold;
-	src: url(../fonts/RobotoCondensed-Bold.ttf) format('truetype');
+	src: url(fonts/RobotoCondensed-Bold.ttf) format('truetype');
 }
 	
 @font-face{
 	font-family: OpenSans-SemiBold;
-	src: url(../fonts/OpenSans-SemiBold.ttf) format('truetype');
+	src: url(fonts/OpenSans-SemiBold.ttf) format('truetype');
 }
 
 

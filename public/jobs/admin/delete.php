@@ -6,7 +6,7 @@ $id = $_GET["id"];
 
 require_once "../../oop/databaseConnect.php";
 $database = new DatabaseConnector();
-$conn = $database->DOCKER_CONNECT("root","password","s20am_team10");
+$conn = $database->connect();
 
 $sql = "DELETE FROM Role WHERE id LIKE '$id'";
 

@@ -117,12 +117,12 @@ input[type=submit] {
 
 @font-face{
 	font-family: RobotoCondensed-Bold;
-	src: url(../fonts/RobotoCondensed-Bold.ttf);
+	src: url(fonts/RobotoCondensed-Bold.ttf);
 }
 	
 @font-face{
 	font-family: OpenSans-SemiBold;
-	src: url(../fonts/OpenSans-SemiBold.ttf);
+	src: url(fonts/OpenSans-SemiBold.ttf);
 }
 
 

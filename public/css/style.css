@@ -1,9 +1,13 @@
-.navigation ol {
+/*
+index.php
+ */
+
+details.navigation ol {
     list-style-type: square;
 }
 
 body{
-	background-image: url("../img/utep_bg.jpg");
+	background-image: url("img/utep_bg.jpg");
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: cover;

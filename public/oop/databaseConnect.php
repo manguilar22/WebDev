@@ -1,8 +1,20 @@
 <?php 
 
-	class DatabaseConnector { 
+	class DatabaseConnector {
+
+	    private static $database;
 
 		public function __constructor(){} 
+
+
+		public function connect()
+        {
+            if (getenv("VERSION") === "DOCKER")
+            {
+                return $this->DOCKER_CONNECT();
+            }
+            return $this->UTEP_CONNECT();
+        }
 
 		public function UTEP_CONNECT() {
 		    //////////////////////////////////////////////
@@ -18,18 +30,23 @@
 			return $conn;
 		}
 
-		public function DOCKER_CONNECT($username,$password,$database){
+		public function DOCKER_CONNECT(){
 
 		    $host_uri = getenv("MYSQL_HOST");
+            $username = getenv("MYSQL_USER");
+            $password = getenv("MYSQL_PASSWORD");
+            $database = getenv("MYSQL_DATABASE");
 
 		    $connection = new mysqli($host_uri,$username,$password,$database);
-			if ($connection -> connect_error) {
+
+		    if ($connection -> connect_error) {
 				die("Failed to connect to Docker instance");
 			}
 			return $connection;
 		}
 
-		public function DOCKER_COMPOSE_CONNECT($databaseName){
+		public function DOCKER_COMPOSE_CONNECT($databaseName)
+        {
             $dockerComposeHost = "mysqlDB";
             $connection = new mysqli($dockerComposeHost,"root","password",$databaseName);
             if ($connection -> connect_error)

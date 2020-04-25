@@ -1,0 +1,140 @@
+body{
+	background-color:#D8D9D9;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	margin:0;
+}
+
+h1{
+	font-family:RobotoCondensed-Bold;
+}
+
+.header {
+  padding: 45px;
+  text-align: center;
+  background: #041E42;
+  color: white;
+  font-size: 20px;
+}
+.navigation-bar img{
+	float:left;
+	width:192px;
+	height:192px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid #e7e7e7;
+  background-color: white;
+}
+
+li {
+  float: right;
+}
+
+li a {
+  display: block;
+  color: #041E42;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-family:OpenSans-SemiBold;
+  font-size:13px;
+}
+
+li a:hover:not(.active) {
+  background-color: #ddd;
+}
+
+li a.active {
+  color: white;
+  background-color: white;
+}
+
+
+.left {
+	background-color:#B1B3B3;
+    position:absolute;
+    left:0; top:191px; bottom: 0;
+    width: 350px;
+	height: 900px;
+}
+.main {
+        position: absolute;
+        left:178px; top:92px; right:0; bottom:0;
+}
+
+.left { 
+	background-color:#B1B3B3; 
+}
+.main { background: white; }
+
+.left h3{
+	text-align:relative;
+	padding: 0px 5px;
+	font-family:RobotoCondensed-Bold;
+}
+
+.links {
+  width: 75%;
+  background-color:#041E42;
+  color: white;
+  padding: 23px 20px;
+  margin: 23px 20px; /* this separates the boxes from each other*/
+  border: none;
+  cursor: pointer;
+  font-family:OpenSans-SemiBold;
+  font-size:20px;
+  text-align:center;
+}
+
+.links:hover{
+	background-color:#FF8200;
+	color:black;
+}
+
+a{
+    text-decoration:none;
+    font-family:OpenSans-SemiBold;
+	color:white;
+}
+
+hr { 
+	display: block; 
+	margin-before: 0.5em; 
+	margin-after: 0.5em; 
+	margin-start: auto; 
+	margin-end: auto; 
+	border-style: inset; 
+	border-width: 5px;
+	color:black;
+}
+
+/* CENTER INFORMATION */
+.div1{
+	padding:427px;
+	width: 55%;
+	background-color:white ;
+}
+
+.studentInfo{
+	
+}
+
+@font-face{
+	font-family: RobotoCondensed-Bold;
+	src: url(../../Team10_am/fonts/RobotoCondensed-Bold.ttf);
+}
+	
+@font-face{
+	font-family: OpenSans-SemiBold;
+	src: url(../../Team10_am/fonts/OpenSans-SemiBold.ttf);
+}
+
+
+
+

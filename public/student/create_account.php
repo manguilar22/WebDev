@@ -5,8 +5,7 @@ require_once "../oop/safetyChecks.php";
 $sanitizer = new Sanitizer();
 
 $databaseConnector = new DatabaseConnector();
-$conn = $databaseConnector -> DOCKER_CONNECT("root","password","s20am_team10");
-//$conn = $databaseConnector -> UTEP_CONNECT();
+$conn=$databaseConnector->connect();
 
 $fName = $sanitizer->cleanInput($_POST["firstName"]);
 $mName = isset($_POST["middleName"])?$_POST["middleName"]:"N/A";
@@ -80,7 +79,7 @@ if(isset($submitButton))
 
 <!-- UTEP LOGO ON LEFT SIDE OF HEADER-->
 <div class="navigation-bar">
-		<img src="../img/utep_logo.png">
+		<img src="../css/img/utep_logo.png">
 </div>
 
 <!-- TITLE IN HEADER -->
@@ -91,7 +90,7 @@ if(isset($submitButton))
 <!-- NAGIVATION BAR -->
 <div class="navigation">
 	<ul>
-		<li><a href="login.php">LOG IN</a></li>
+		<li><a href="lo">LOG IN</a></li>
 		<li><a href="../index.php">BACK</a></li>
 	</ul>
 </div>

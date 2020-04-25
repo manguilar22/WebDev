@@ -4,8 +4,7 @@
 require_once "../../oop/databaseConnect.php";
 
 $databaseConnector = new DatabaseConnector();
-$conn = $databaseConnector -> DOCKER_CONNECT("root","password","s20am_team10");
-//$db = $databaseConnector->UTEP_CONNECT();
+$conn = $databaseConnector->connect();
 
 $username = $_SESSION["user"];
 $mysqlQuery = "SELECT (Sclass) FROM Student WHERE Semail LIKE '$username'";

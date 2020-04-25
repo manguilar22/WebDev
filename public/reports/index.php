@@ -15,8 +15,7 @@
 <?php
     require_once "../oop/databaseConnect.php";
     $db = new DatabaseConnector();
-    //$conn = $db -> UTEP_CONNECT();
-    $conn = $db->DOCKER_CONNECT("root","password","s20am_team10");
+    $conn = $db->connect();
 
 $summaryOne = "SELECT AVG(SmajorGPA) AS 'majorGPA',AVG(SoverallGPA) AS 'overallGPA' FROM Student";
 

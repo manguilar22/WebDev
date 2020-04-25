@@ -2,12 +2,13 @@
     list-style-type: square;
 }
 
-body{
-	background-image: url("img/utep_bg.jpg");
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-size: cover;
-	
+body {
+    background-image: url("img/utep_bg.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
 ol{
   list-style-type: none;
   margin: 0;

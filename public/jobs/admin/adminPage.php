@@ -2,7 +2,7 @@
 <?php
     require "../../oop/databaseConnect.php";
     $database = new DatabaseConnector();
-    $conn = $database -> DOCKER_CONNECT("root","password","s20am_team10");
+    $conn = $database -> connect();
 
     ?>
 <!DOCTYPE html>

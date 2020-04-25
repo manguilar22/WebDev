@@ -3,8 +3,7 @@
 
 require_once "../oop/databaseConnect.php";
 $databaseConnector = new DatabaseConnector();
-$conn = $databaseConnector -> DOCKER_CONNECT("root","password","s20am_team10");
-//$conn = $databaseConnector->UTEP_CONNECT();
+$conn = $databaseConnector->connect();
 $_SESSION['logged_in'] = false;
 
 
@@ -31,7 +30,7 @@ if (!empty($_POST)){
             $_SESSION['logged_in'] = true;
             $_SESSION["status"] = "student";
             //echo"User found";
-            header("Location: ../jobs/studentApplicationPage.php");
+            header("Location: ../profile/student_profile.php");
         } elseif ($resultAdmin > 0) {
             $_SESSION["user"] = $input_username;
             $_SESSION["logged_in"] = true;
@@ -45,7 +44,7 @@ if (!empty($_POST)){
             //echo "Coordinator Found";
             header("Location: ../jobs/coordinatorPage.php");
         }else {
-			      error_reporting(0);
+			error_reporting(0);
             $errorMsg = "<div class='displayError'>*User does not exist. Click below and create an account. <br/></div>";
         }
     }
@@ -63,7 +62,7 @@ if (!empty($_POST)){
 <body>
 
 <div class="box">
-	<img src="../img/login_logo.png" width="500px" height="361px">
+	<img src="../css/img/login_logo.png" width="500px" height="361px">
 	<div class="userInput">
 		<h1>USER LOG IN</h1>
 		<div>
@@ -87,7 +86,7 @@ if (!empty($_POST)){
 
 	<div class="links">
 		<a href="../index.php" style="float:left">Back</a>
-		<a href="./create_account.php" style="float:right">Create Account</a>
+		<a href="create_account.php" style="float:right">Create Account</a>
 	</div>
 </div>
 
