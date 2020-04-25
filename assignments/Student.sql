@@ -7,16 +7,16 @@ EMAIL <===> USERNAME
 
 
 CREATE TABLE Student (
-    id INT NOT NULL AUTO_INCREMENT,
-    SfirstName CHAR(20),
-    SmiddleName CHAR(20),
-    SlastName CHAR(20),
+    Sid INT NOT NULL AUTO_INCREMENT,
+    Sfname CHAR(20),
+    Smname CHAR(20),
+    Slname CHAR(20),
     Semail VARCHAR(20),
-    Sclass VARCHAR(20),
-    SResidencyStatus VARCHAR(20),
+    Sclassification VARCHAR(20),
+    Sresidency_status VARCHAR(20),
     Sgender VARCHAR(1),
-    SmajorGPA DECIMAL(4,2),
-    SoverallGPA DECIMAL(4,2),
+    Smajor_gpa DECIMAL(4,2),
+    Sover_all_gpa DECIMAL(4,2),
     Spassword VARCHAR(100),
     PRIMARY KEY (id)
 ) ENGINE=InnoDB;
@@ -24,17 +24,17 @@ CREATE TABLE Student (
 
 
 
-INSERT INTO Student(
-                    SfirstName,
-                    SmiddleName,
-                    SlastName,
-                    Semail,
-                    Sclass,
-                    SResidencyStatus,
-                    Sgender,
-                    SmajorGPA,
-                    SoverallGPA,
-                    Spassword
+INSERT INTO student(
+Sfname,
+Smname,
+Slname,
+Semail,
+Sclassification,
+Sresidency_status,
+Sgender,
+Smajor_gpa,
+Sover_all_gpa,
+Spassword
                     ) VALUES (
                         "user",
                         "N/A",
@@ -53,16 +53,17 @@ INSERT INTO Student(
  */
 
  INSERT INTO Student(
-                    SfirstName,
-                    SmiddleName,
-                    SlastName,
-                    Semail,
-                    Sclass,
-                    SResidencyStatus,
-                    Sgender,
-                    SmajorGPA,
-                    SoverallGPA,
-                    Spassword
+ Sid,
+ Sfname,
+ Smname,
+ Slname,
+ Semail,
+ Sclassification,
+ Sresidency_status,
+ Sgender,
+ Smajor_gpa,
+ Sover_all_gpa,
+ Spassword
                     ) VALUES (
                         "user",
                         "N/A",
@@ -99,3 +100,4 @@ INSERT INTO Student(
                         2.22,
                         "user3"
                     );
+

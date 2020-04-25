@@ -7,19 +7,19 @@ $databaseConnector = new DatabaseConnector();
 $conn = $databaseConnector->connect();
 
 $username = $_SESSION["user"];
-$mysqlQuery = "SELECT (Sclass) FROM Student WHERE Semail LIKE '$username'";
+$mysqlQuery = "SELECT student(Sclassification) FROM student WHERE Semail LIKE '$username'";
 $classification = $conn -> query($mysqlQuery) -> fetch_array()[0];
 
 switch ($classification)
 {
     case $classification==="undergraduate":
         // Undergraduate can only be Peer Leader or Instructional Assistant
-        $jobPostingQuery = "SELECT * FROM Role WHERE RjobTitle LIKE 'IA' UNION SELECT * FROM Role WHERE RjobTitle LIKE 'PL' ORDER BY id DESC";
+        $jobPostingQuery = "SELECT * FROM role WHERE RjobTitle LIKE 'IA' UNION SELECT * FROM Role WHERE RjobTitle LIKE 'PL' ORDER BY id DESC";
         $jobPostings = $conn->query($jobPostingQuery);
         break;
 
-    case $classification==="Graduate" or $classification==="Doctorate":
-        $jobPostingQuery = "SELECT * FROM Role WHERE RjobTitle LIKE 'TA' ORDER BY id DESC";
+    case $classification==="graduate" or $classification==="doctorate":
+        $jobPostingQuery = "SELECT * FROM role WHERE RjobTitle LIKE 'TA' ORDER BY id DESC";
         $jobPostings = $conn->query($jobPostingQuery);
         break;
 }

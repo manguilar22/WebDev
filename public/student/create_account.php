@@ -24,19 +24,7 @@ $submitButton = $_POST["submit"];
 if(isset($submitButton))
 {
     // Create New Account
-    $sql = "INSERT INTO Student(
-                    SfirstName,
-                    SmiddleName,
-                    SlastName,
-                    Semail,
-                    Sclass,
-                    SResidencyStatus,
-                    Sgender,
-                    SmajorGPA,
-                    SoverallGPA,
-                    Spassword
-            )
-            VALUES (
+    $pSql= "CALL new_student(
             '$fName',
             '$mName',
             '$lName',
@@ -46,22 +34,26 @@ if(isset($submitButton))
             '$gender',
             '$majorGPA',
             '$overallGPA',
-            '$password') ";
+            '$password'
+            )";
 
     // Count Query
-    $testQuery = "SELECT COUNT(*) FROM Student WHERE Semail LIKE '$uEmail'";
+    $testQuery = "SELECT COUNT(*) FROM student WHERE Semail LIKE '$uEmail'";
     $count = $conn->query($testQuery)->fetch_array()[0];
 
     if ($count >= 1)
     {
+
         echo "Account Already Exists";
-    } elseif ($conn -> query($sql) === TRUE)
+
+    } elseif ($conn -> query($pSql) === TRUE)
     {
         echo "Successful Submission";
-    } elseif ($conn->error){
-        echo "Account already exists because of the email.";
+
     } else {
+
         echo "[-] An error has occurred:\t".$conn->error;
+
     }
 }
 ?>
@@ -120,18 +112,18 @@ if(isset($submitButton))
         <!-- SELECT GOES HERE -->
         <select class="form-control" name="classification">
 			<option selected disabled>Classification</option>
-            <option value="Undergraduate">Undergraduate</option>
-            <option value="Graduate">Graduate</option>
-            <option value="Doctorate">Doctorate</option>
+            <option value="undergraduate">Undergraduate</option>
+            <option value="graduate">Graduate</option>
+            <option value="doctorate">Doctorate</option>
         </select> <br/>
 
 		<!-- RESIDENCY -->
 
         <select class="form-control" name="status">
 			<option selected disabled>Residency</option>
-            <option value="In-state">Instate</option>
-            <option value="International">International</option>
-            <option value="Out-state">Out of State</option>
+            <option value="in-state">Instate</option>
+            <option value="international">International</option>
+            <option value="out-state">Out of State</option>
         </select> <br/>
 
 		<!-- GENDER -->

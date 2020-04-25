@@ -30,19 +30,19 @@ if (!empty($_POST)){
             $_SESSION['logged_in'] = true;
             $_SESSION["status"] = "student";
             //echo"User found";
-            header("Location: ../profile/student_profile.php");
+            header("Location: ../jobs/student/student_profile.php");
         } elseif ($resultAdmin > 0) {
             $_SESSION["user"] = $input_username;
             $_SESSION["logged_in"] = true;
             $_SESSION["status"] = "admin";
             //echo "Admin Found";
-            header("Location: ../jobs/adminPage.php");
+            header("Location: ../jobs/admin/adminPage.php");
         } elseif ($resultCoordinator > 0) {
             $_SESSION["user"] = $input_username;
             $_SESSION["logged_in"] = true;
             $_SESSION["status"] = "coordinator";
             //echo "Coordinator Found";
-            header("Location: ../jobs/coordinatorPage.php");
+            header("Location: ../jobs/coordinator/coordinatorPage.php");
         }else {
 			error_reporting(0);
             $errorMsg = "<div class='displayError'>*User does not exist. Click below and create an account. <br/></div>";

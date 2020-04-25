@@ -47,7 +47,7 @@ $predicate = empty($className) && empty($classCRN);
 
 if( !$predicate && isset($_POST["submit"]) )
 {
-    $sql = "INSERT INTO Role(RjobTitle,RclassName,RclassCRN) VALUES (
+    $sql = "INSERT INTO role(RjobTitle,RclassName,RclassCRN) VALUES (
             '$jobTitle',
             '$className',
             '$classCRN'
@@ -82,7 +82,7 @@ if( !$predicate && isset($_POST["submit"]) )
         <?php
 
 
-        $sql = "SELECT * FROM Role ORDER BY id DESC";
+        $sql = "SELECT * FROM role ORDER BY id DESC";
         foreach ($conn->query($sql)as $row)
         {
 
