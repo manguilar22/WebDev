@@ -68,7 +68,7 @@ if (!empty($_POST)){
 		<div>
 			<form action="login.php" method="post">
 				<!-- <label>User Name</label> -->
-				<input class="form-control" type="text" name="username" placeholder="username">
+				<input class="form-control" type="text" name="username" placeholder="use UTEP email">
 				<!-- <small class="form-text text-muted">use UTEP email</small> -->
 				<!-- <label>Password</label> -->
 				</br><input class="form-control" type="password" name="password" placeholder="password"> <br/>
