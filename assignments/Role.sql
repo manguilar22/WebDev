@@ -5,7 +5,7 @@
 
 
 
- CREATE TABLE Role (
+ CREATE TABLE role (
     id INT NOT NULL AUTO_INCREMENT,
     RjobTitle VARCHAR(2),
     RclassName VARCHAR(20),
@@ -14,7 +14,7 @@
  ) ENGINE=Innodb;
 
 
-	INSERT INTO Role (
+	INSERT INTO role (
 		RjobTitle,
 		RclassName,
 		RclassCRN

@@ -47,11 +47,8 @@ $predicate = empty($className) && empty($classCRN);
 
 if( !$predicate && isset($_POST["submit"]) )
 {
-    $sql = "INSERT INTO role(RjobTitle,RclassName,RclassCRN) VALUES (
-            '$jobTitle',
-            '$className',
-            '$classCRN'
-            )";
+    $sql = "CALL new_jobRole('$jobTitle','$className','$classCRN')";
+
     if ($conn->query($sql)) { echo "submit";}
     else { echo "CRN Already Used"; }
 

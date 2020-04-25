@@ -4,14 +4,16 @@
 
 
 DELIMITER //
-CREATE PROCEDURE new_job_role(
-
+CREATE PROCEDURE new_jobRole(
+    IN jobTitle VARCHAR(2),
+    IN className VARCHAR(20),
+    IN classCRN VARCHAR(10)
 )
 BEGIN
 INSERT INTO role(RjobTitle,RclassName,RclassCRN) VALUES (
-            '$jobTitle',
-            '$className',
-            '$classCRN'
+            jobTitle,
+            className,
+            classCRN
             );
 END; //
 DELIMITER ;

@@ -17,11 +17,11 @@
     $db = new DatabaseConnector();
     $conn = $db->connect();
 
-$summaryOne = "SELECT AVG(SmajorGPA) AS 'majorGPA',AVG(SoverallGPA) AS 'overallGPA' FROM Student";
+$summaryOne = "SELECT AVG(Smajor_gpa) AS 'majorGPA',AVG(Sover_all_gpa) AS 'overallGPA' FROM student";
 
 $fetchOne = $conn->query($summaryOne)->fetch_array();
 
-$summaryTwo = "SELECT COUNT(*) AS 'total' FROM Student";
+$summaryTwo = "SELECT COUNT(*) AS 'total' FROM student";
 $fetchTwo = $conn->query($summaryTwo)->fetch_array();
 
 echo "<p>Registered students: ".$fetchTwo["total"]."</p>";

@@ -27,6 +27,8 @@ $majorGPA   = $studentData["Smajor_gpa"];
 $email      = $studentData["Semail"];
 $gender     = $studentData["sgender"];
 
+
+
 ?>
 
 <!DOCTYPE html>
