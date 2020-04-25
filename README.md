@@ -9,9 +9,9 @@
 
 ### Directory Structure 
 
-* **.github/workflows/docker-demo.yaml**
+* **.github/workflows/docker.yaml**
 * **assignments/** 
-* **public/** 
+* **public/**
 * **Dockerfile** 
 * **docker-compose.yaml** 
 
@@ -20,13 +20,14 @@
 #### Linux / Unix 
 
 ```bash 
+$ export VERSION=DOCKER
 $ export MYSQL_HOST=<IP_ADDRESS>
 $ export MYSQL_USER=<USERNAME>
 $ export MYSQL_PASSWORD=<PASSWORD>
 $ export MYSQL_DATABASE=<DATABASE NAME> 
 ```
 
-Start php-cli
+start php-cli
 
 ```bash
 $ php -t public/ -S 127.0.0.1:8080 
