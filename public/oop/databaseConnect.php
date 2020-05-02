@@ -9,14 +9,14 @@
 
 		public function connect()
         {
-            if (getenv("VERSION") === "DOCKER")
+            if (getenv("VERSION") === "LOCAL")
             {
-                return $this->DOCKER_CONNECT();
+                return $this->env_connect();
             }
-            return $this->UTEP_CONNECT();
+            return $this->utep_connect();
         }
 
-		public function UTEP_CONNECT() {
+		public function utep_connect() {
 		    //////////////////////////////////////////////
 			$utepMYSQLAddr = "ilinkserver.cs.utep.edu";
 			$user = "maguilar15";
@@ -30,14 +30,14 @@
 			return $conn;
 		}
 
-		public function DOCKER_CONNECT(){
+		public function env_connect(){
 
 		    $host_uri = getenv("MYSQL_HOST");
             $username = getenv("MYSQL_USER");
             $password = getenv("MYSQL_PASSWORD");
             $database = getenv("MYSQL_DATABASE");
 
-		    $connection = new mysqli($host_uri,$username,$password,$database);
+		    $connection = new mysqli("mysqlDB",$username,$password,$database);
 
 		    if ($connection -> connect_error) {
 				die("Failed to connect to Docker instance");
@@ -45,10 +45,11 @@
 			return $connection;
 		}
 
-		public function DOCKER_COMPOSE_CONNECT($databaseName)
+		public function docker_compose_connect()
         {
             $dockerComposeHost = "mysqlDB";
-            $connection = new mysqli($dockerComposeHost,"root","password",$databaseName);
+            $databaseURL = getenv("MYSQL_HOST");
+            $connection = new mysqli($dockerComposeHost,"root","password",$dockerComposeHost);
             if ($connection -> connect_error)
             {
                 die("Failed to connect to Docker Compose Instance");

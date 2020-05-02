@@ -4,7 +4,7 @@ LABEL maintainer=manguilar22@gmail.com
 WORKDIR /usr/src/myapp
 COPY public/. .
 
-ENV VERSION DOCKER
+ENV VERSION LOCAL
 
 ENV MYSQL_HOST 127.0.0.1
 ENV MYSQL_USERNAME root

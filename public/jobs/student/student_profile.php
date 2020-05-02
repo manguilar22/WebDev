@@ -48,7 +48,6 @@ $gender     = $studentData["sgender"];
 <p>Hi <?php echo $firstName . " " . $lastName ?></p>
 </div>
 
-
 <!-- UTEP LOGO ON LEFT SIDE OF HEADER-->
 <div class="navigation-bar">
     <img src="../../css/img/utep_logo.png">

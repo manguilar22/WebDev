@@ -9,7 +9,7 @@ services:
       context: .
       dockerfile: Dockerfile
     environment:
-      MYSQL_HOST: mysqlDB #172.17.0.2 #AUTOMATE
+      MYSQL_HOST: mysqlDB
       MYSQL_USER: root
       MYSQL_PASSWORD: password
       MYSQL_DATABASE: s20am_team10
@@ -17,13 +17,12 @@ services:
       - mysqlDB
     ports:
       - "8080:80"
-   
+
   mysqlDB:
     container_name: utep-mysql-db
     image: mysql:5.7
     environment:
       MYSQL_ROOT_PASSWORD: password
-      MYSQL_USER: root
+      MYSQL_USER: user
       MYSQL_PASSWORD: password
       MYSQL_DATABASE: s20am_team10
-    
