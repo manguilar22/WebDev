@@ -4,13 +4,13 @@
 
 
 DELIMITER //
-CREATE PROCEDURE new_jobRole(
+CREATE PROCEDURE new_course(
     IN jobTitle VARCHAR(2),
     IN className VARCHAR(20),
     IN classCRN VARCHAR(10)
 )
 BEGIN
-INSERT INTO role(RjobTitle,RclassName,RclassCRN) VALUES (
+INSERT INTO course(CjobTitle,CclassName,CclassCRN) VALUES (
             jobTitle,
             className,
             classCRN

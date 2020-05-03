@@ -1,15 +1,12 @@
 <?php session_start(); ?>
 <?php
 
-//include "design_template.html";
-
-// Connect to UTEP Database
-require_once "../../oop/databaseConnect.php";
+// Connect to Database
+require_once("../../oop/databaseConnect.php");
 $database = new DatabaseConnector();
-$conn = $database->connect();
+$conn = $database -> connect();
 
 $username = $_SESSION["user"];
-
 // This will return a row with all attributes associated with the email.
 $findStudentQuery = "SELECT * FROM student WHERE Semail LIKE '$username'";
 
@@ -21,13 +18,11 @@ $firstName  = $studentData["Sfname"];
 $middleName = $studentData["Smname"];
 $lastName   = $studentData["Slname"];
 $classification = $studentData["Sclassification"];
-$residency  = $studentData["Sresidency-status"];
+$residency  = $studentData["Sresidency_status"];
 $overallGPA = $studentData["Sover_all_gpa"];
 $majorGPA   = $studentData["Smajor_gpa"];
 $email      = $studentData["Semail"];
-$gender     = $studentData["sgender"];
-
-
+$gender     = $studentData["Sgender"];
 
 ?>
 
@@ -36,57 +31,55 @@ $gender     = $studentData["sgender"];
 
 <head>
 	<!-- LINK STYLESHEET -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../css/design_style.css"/>
-    <link rel="stylesheet" href="../../css/student_profile_style.css"/>
-    <title>Profile</title>
 </head>
 
 <body>
 
-<div class="box">
-<p>Hi <?php echo $firstName . " " . $lastName ?></p>
-</div>
+<!-- INFORMATION OF STUDENT GOES HERE -->
+	<div class="studentInfo">
+		<table>
+			<tr>
+				<th>Student Full Name</th>
+				<td> <?php echo $firstName . " " . $middleName . " " . $lastName ?> </td>
+			</tr>
+			<tr>
+				<th>Gender</th>
+				<td><?php echo $gender ?></td>
+			</tr>
+			<tr>
+				<th>E-Mail Address</th>
+				<td><?php echo $email ?></td>
+			</tr>
+			<tr>
+				<th>Classification</th>
+				<td><?php echo $classification ?></td>
+			</tr>
+			<tr>
+				<th>Residency Status</th>
+				<td><?php echo $residency ?></td>
+			</tr>
+			<tr>
+				<th>Overall GPA</th>
+				<td><?php echo $overallGPA ?></td>
+			</tr>
+			<tr>
+				<th>Major GPA</th>
+				<td><?php echo $majorGPA ?></td>
+			</tr>
+		</table>
+	</div>
 
-<!-- UTEP LOGO ON LEFT SIDE OF HEADER-->
-<div class="navigation-bar">
-    <img src="../../css/img/utep_logo.png">
-</div>
-<!-- TITLE IN HEADER -->
-<div class="header">
-    <h1>STUDENT PROFILE</h1>
-</div>
+<!-- Application Page -->
+<a href="studentApplicationPage.php">Application Page</a>
 
-<!-- NAGIVATION BAR -->
-<div class="navigation">
-    <ul>
-        <li><a href="../../student/login.php">LOG OUT<?php session_destroy();?></a></li>
-        <li><a href="../../index.php">BACK</a></li>
-    </ul>
-</div>
+<!-- Edit Profile -->
+<a href="manageProfile.php">Edit Profile</a>
 
-<div class="left">
-    <h3>RESOURCES</h3><hr></hr>
-    <div class="leftBox">
-        <div class = "sidenav">
-            <div class="links">
-                <a href="../application.php">Fill Application</a></br>
-            </div>
-            <div class="links">
-                <a href="./create_account.php">View Status</a>
-            </div>
-            <div class="links">
-                <a href="./create_account.php">Edit Profile</a>
-            </div>
-        </div>
-    </div>
-</div>
+<!-- Application Status -->
+<a href="applicationStatus.php">Application Status</a>
 
-<div class="div1">
-
-</div>
-
-
+<!-- Logout -->
+<a href="../../student/login.php">Logout</a>
 
 </body>
 </html>

@@ -7,7 +7,7 @@ CREATE VIEW Undergraduate AS SELECT * FROM student WHERE Sclassification LIKE "u
 Get all  graduate and doctorate students in the applicant pool. This is a unique group as they can only apply to one position. 
 */ 
 
-CREATE VIEW TA AS SELECT * FROM student WHERE Sclassification LIKE “doctorate” OR Sclassification LIKE “graduate”;
+CREATE VIEW TA AS SELECT * FROM student WHERE Sclassification LIKE "doctorate" or Sclassification LIKE "graduate";
 
 /*
 Get the most promising students in the applicant pool.

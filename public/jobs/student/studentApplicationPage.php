@@ -7,18 +7,17 @@ $databaseConnector = new DatabaseConnector();
 $conn = $databaseConnector->connect();
 
 $username = $_SESSION["user"];
-$mysqlQuery = "SELECT student(Sclassification) FROM student WHERE Semail LIKE '$username'";
+$mysqlQuery = "SELECT Sclassification FROM student WHERE Semail LIKE '$username'";
 $classification = $conn -> query($mysqlQuery) -> fetch_array()[0];
 
 switch ($classification)
 {
-    case $classification==="undergraduate":
+    case "undergraduate":
         // Undergraduate can only be Peer Leader or Instructional Assistant
-        $jobPostingQuery = "SELECT * FROM role WHERE RjobTitle LIKE 'IA' UNION SELECT * FROM Role WHERE RjobTitle LIKE 'PL' ORDER BY id DESC";
+        $jobPostingQuery = "SELECT * FROM role WHERE RjobTitle LIKE 'IA' UNION SELECT * FROM role WHERE RjobTitle LIKE 'PL' ORDER BY id DESC";
         $jobPostings = $conn->query($jobPostingQuery);
         break;
-
-    case $classification==="graduate" or $classification==="doctorate":
+    default:
         $jobPostingQuery = "SELECT * FROM role WHERE RjobTitle LIKE 'TA' ORDER BY id DESC";
         $jobPostings = $conn->query($jobPostingQuery);
         break;
@@ -38,25 +37,38 @@ switch ($classification)
 
     <h1> Welcome Applicant </h1>
 
-    <h1> You are a <?php echo $classification?></h1>
+    <h2> You are a <?php echo $classification?></h2>
 
-    <!-- Job Application -->
-    <form action="studentApplicationPage.php" method="post">
+    <h3> Apply for job</h3>
 
-    </form>
-
-    <h1>Positions</h1>
-
-    <ol style="list-style-type: square">
+    <form action="">
         <?php
             foreach ($jobPostings as $item)
             {
-                echo "<li>";
-                echo $item["RjobTitle"];
-                echo "</li>";
+                $e = $item["id"];
+                echo $e;
+                echo "<br/>";
             }
-            ?>
-    </ol>
+        ?>
+    </form>
+
+    <h2>Positions</h2>
+
+<table>
+    <th>Job ID</th>
+    <th>Job Position</th>
+    <th>Class Name</th>
+    <tr/>
+    <?php
+    foreach ($jobPostings as $item)
+    {
+        echo "<td>".$item["id"]."</td>";
+        echo "<td>".$item["RjobTitle"]."</td>";
+        echo "<td>".$item["RclassName"]."</td>";
+        echo "<tr/>";
+    }
+    ?>
+</table>
 
 
 
