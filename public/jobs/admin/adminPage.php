@@ -10,6 +10,8 @@
 
 <head>
     <title>Admin</title>
+    <!--<link type="text/css" rel="stylesheet" href="../../css/style.css"/>-->
+
 </head>
 
 <body>
@@ -21,27 +23,11 @@
 
 
 <!-- Create a Job Role as a Admin -->
-<h4>Create Role</h4>
-<div class="createRole">
-<form action="adminPage.php" method="post">
-
-    <label for="Student Title"></label>
-    <select name="jobTitle">
-        <option value="IA">Instructional Assistant (IA)</option>
-        <option value="TA">Teacher Assistant (TA)</option>
-        <option value="PL">Peer Leader</option>
-    </select>
-    <label for="UTEP Class Name"></label>
-    <input type="text" name="className" placeholder="UTEP Class Name"/>
-    <label for="Class CRN"></label>
-    <input type="text" name="classCRN" placeholder="UTEP Class CRN"/>
-    <input type="submit" name="submit" placeholder="Submit Job"/>
-</form>
 <?php
 
-$jobTitle = $_POST["jobTitle"];
-$className = $_POST["className"];
-$classCRN = $_POST["classCRN"];
+$jobTitle = isset($_POST["jobTitle"]) ? $_POST["jobTitle"] : null;
+$className = isset($_POST["className"]) ? $_POST["className"] : null;
+$classCRN = isset($_POST["classCRN"]) ? $_POST["classCRN"] : null;
 
 $predicate = empty($className) && empty($classCRN);
 
@@ -61,6 +47,22 @@ if( !$predicate && isset($_POST["submit"]) )
 
 
 ?>
+<h4>Create Role</h4>
+<div class="createRole">
+<form action="adminPage.php" method="post">
+
+    <label for="Student Title"></label>
+    <select name="jobTitle">
+        <option value="IA">Instructional Assistant (IA)</option>
+        <option value="TA">Teacher Assistant (TA)</option>
+        <option value="PL">Peer Leader (PL)</option>
+    </select>
+    <label for="UTEP Class Name"></label>
+    <input type="text" name="className" placeholder="UTEP Class Name"/>
+    <label for="Class CRN"></label>
+    <input type="text" name="classCRN" placeholder="UTEP Class CRN"/>
+    <input type="submit" name="submit" placeholder="Submit Job"/>
+</form>
 </div>
 
 

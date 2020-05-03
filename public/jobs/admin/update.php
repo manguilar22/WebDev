@@ -2,64 +2,69 @@
 <?php
 
 require_once "../../oop/databaseConnect.php";
-$database = new DatabaseConnector();
-$conn = $database->DOCKER_CONNECT("root","password","s20am_team10");
+$databaseConnector = new DatabaseConnector();
+$conn = $databaseConnector->connect();
 
 $id = $_GET["id"];
-if (isset($id) )
-{
+
+$getJobRole = "SELECT  * FROM role WHERE id LIKE '$id'";
+
+$results = $conn->query($getJobRole)->fetch_array();
+
+$submit = $_POST["submit"];
 
 
 
-    $query = "SELECT * FROM Role WHERE id LIKE '$id'";
+$jobTitle = isset($_POST["jobTitle"]) ? $_POST["jobTitle"] : $results["RjobTitle"];
+$className = isset($_POST["className"]) ? $_POST["className"] : $results["RclassName"];
+$classCRN = isset($_POST["classCRN"]) ? $_POST["classCRN"] : $results["RclassCRN"];
+$jobID = isset($_GET["id"]) ? $_GET["id"] : $results["id"];
 
-    $result = $conn->query($query)->fetch_assoc();
+$updateQuery = "UPDATE role SET  RjobTitle = '$jobTitle', RclassName = '$className' , RclassCRN = '$classCRN' WHERE id LIKE '$jobID'";
 
-    if (count($result) != 0)
-    {
-        $jobTitleTMP = $result["RjobTitle"];
-        $classNameTMP = $result["RclassName"];
-        $classCRNTMP = $result["RclassCRN"];
-
-    }
-
-
+if(isset($submit)) {
+    $conn->query($updateQuery);
+    $message = "Record Modified Successfully";
 }
+$result = $conn->query("SELECT * FROM role WHERE id LIKE '$id'");
+$row= mysqli_fetch_array($result);
 
-?>
-<!DOCTYPE html>
-<html>
-
-<head>
-    <title>Update</title>
-</head>
-<body>
-
-<form action="update.php" method="post">
-
-    <label>Job Title</label>
-    <input type="text" name="jobTitle" value=<?php echo $jobTitleTMP;?>/>
-    <label>Class Name</label>
-    <input type="text" name="jobClass" value=<?php echo $classNameTMP;?>/>
-    <label>Class CRN</label>
-    <input type="text" name="jobCRN" value=<?php echo $classCRNTMP;?>/>
-    <input type="submit" name="submit" placeholder="submit"/>
-</form>
-
-<?php
-if (isset($_POST["submit"]))
-{
-    $jobTitle = $_POST['jobTitle'];
-    $className = $_POST['jobClass'];
-    $classCRN = $_POST["jobCRN"];
-    $editQuery = "UPDATE Role SET RjobTitle='$jobTitle',RclassName='$className',RclassCRN='$classCRN' WHERE id LIKE '$id'";
-    $conn->query($editQuery) or die("Error Updating");
-    //echo "Submitted:".$jobTitle.$classCRN.$className;
+if (isset($submit)) {
+    $conn->query($updateQuery);
     header("location: adminPage.php");
 }
 
-?>
 
+?>
+<html>
+<head></head>
+
+<body>
+
+<h1> Control Panel </h1>
+
+<form action="" method="post">
+    <select name="jobTitle">
+        <option value="IA">Instructional Assistant (IA)</option>
+        <option value="PL">Peer Leader (PL)</option>
+        <option value="TA">Teacher Assistant (TA)</option>
+    </select>
+    <input type="text" name="className" value=<?php echo $results["RclassName"];?>/>
+    <input type="text" name="classCRN" value=<?php echo $results["RclassCRN"];?>/>
+    <input type="submit" name="submit" placeholder="submit"/>
+</form>
+
+<h2> Updating Record <?php echo $jobID?> </h2>
+
+<table>
+    <th>Job Title</th>
+    <th>Class Name</th>
+    <th>Class CRN</th>
+    <tr/>
+    <td><?php echo $jobTitle; ?></td>
+    <td><?php echo $className; ?></td>
+    <td><?php echo $classCRN; ?></td>
+</table>
 
 
 </body>
