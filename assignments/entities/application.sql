@@ -11,11 +11,14 @@ CREATE TABLE Application (
     AprofileImageType VARCHAR(25) NOT NULL,
     Astudent_id INT NOT NULL,
     AstudentJobs VARCHAR(100) NOT NULL,
+    Astatus VARCHAR(100) DEFAULT "In Review",
     PRIMARY KEY (Aapplication_id)
 )Engine=InnoDB;
 
-CREATE TABLE FILLED_OUT (
+
+
+CREATE TABLE FILLS_OUT (
     ApplicationID INT NOT NULL,
+    StudentID INT NOT NULL
     timestamp DATE
-    status VARCHAR(100) DEFAULT "In Review"
 )ENGINE=InnoDB;

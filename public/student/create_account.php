@@ -8,7 +8,7 @@ $databaseConnector = new DatabaseConnector();
 $conn=$databaseConnector->connect();
 
 $fName = $sanitizer->cleanInput($_POST["firstName"]);
-$mName = isset($_POST["middleName"])?$_POST["middleName"]:"N/A";
+$mName = isset($_POST["middleName"])?$sanitizer->cleanInput($_POST["middleName"]):"N/A";
 $lName = $sanitizer->cleanInput($_POST["lastName"]);
 $uEmail = $sanitizer->cleanInput($_POST["utepEmail"]);
 $class = $_POST["classification"];
@@ -16,7 +16,7 @@ $status = isset($_POST["status"]) ?  $_POST["status"] : "N/A";
 $gender = isset($_POST["gender"]) ? $_POST["gender"] : "N";
 $majorGPA = isset($_POST["majorGPA"]) ? $sanitizer->checkGPA($_POST["majorGPA"]) : 0.0;
 $overallGPA = isset($_POST["overallGPA"]) ? $sanitizer->checkGPA($_POST["overallGPA"]) : 0.0;
-$password = $_POST["password"];
+$password = $sanitizer->cleanInput($_POST["password"]);
 //$password = password_hash($_POST["password"],PASSWORD_DEFAULT);
 
 $submitButton = $_POST["submit"];

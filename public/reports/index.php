@@ -5,7 +5,6 @@
 
 <head>
     <title>Reports</title>
-    <link rel="stylesheet" href="../css/utep.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
 </head>
 
@@ -41,13 +40,28 @@ echo "<p>Overall GPA of <b>All</b> Candidates: ".$fetchOne["overallGPA"]."</p>";
 require_once "../oop/faas.php";
 $wolfram = new Wolfram();
 
+// Convert to view
+$sqlQ = "SELECT Sgender AS gender, COUNT(Sgender) AS gender_count ,Sresidency_status AS residency,COUNT(Sresidency_status) AS total, AVG(Smajor_gpa) AS average_major_GPA, AVG(Sover_all_gpa) AS average_overall_GPA FROM Student GROUP BY Sresidency_status,Sgender";
 
-//$picture = $wolfram->WolframCloudCall(10,20,30,40);
+$tMajor = [];
+$tOverall = [];
+$tResidency = [];
 
-//$imageData = base64_encode($picture);
+$test = $conn->query($sqlQ)->fetch_array();
 
-// <img src="data:image/png;base64,<?php echo $imageData">
+foreach ($test as $e)
+{
+    echo e["gender"];
+}
+
+
+//$picture = $wolfram->WolframCloudCall(implode(",",$tMajor), implode(",",$tOverall), implode(",",$tResidency));
+
+//$imgData = "data:image/png;base64,".base64_encode($picture);
 ?>
+
+<img src="<?php echo 0;?>"/>
+
 
 
 

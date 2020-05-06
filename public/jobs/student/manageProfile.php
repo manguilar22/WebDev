@@ -59,7 +59,7 @@ if ( isset($_POST["submit"]) )
 <!-- Student Application FORM INSIDE OF BOX-->
 <div class="box">
     <div class="studentForm">
-        <form method="post" action="">
+        <form action="" method="post">
             <!-- NAME INFO -->
             <!-- IN LINE INFORMATION FOR NAME -->
             <div class="horizontalBox">

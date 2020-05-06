@@ -18,6 +18,7 @@ CREATE PROCEDURE create_application(
 )
 BEGIN
     INSERT INTO Application(
+        INSERT INTO Application(
         Astudent_id,
         AstudentJobs,
         Acredit_hours,
@@ -52,7 +53,7 @@ DELIMITER ;
 
 DELIMITER //
 CREATE PROCEDURE async_submit_application(
-     IN studentID INT,
+    IN studentID INT,
     IN AstudentJobs VARCHAR(100),
     IN creditHours INT,
     IN numberOfHours INT,
@@ -120,6 +121,9 @@ INSERT INTO Course(CjobTitle,CclassName,CclassCRN) VALUES (
 END; //
 DELIMITER ;
 
+CALL new_course("TA","Database Management","1122");
+
+
 /*
 	Insert student record to database
 */
@@ -138,7 +142,7 @@ CREATE PROCEDURE new_student(
 	IN password VARCHAR(100)
 )
 BEGIN 
-	INSERT INTO student(
+	INSERT INTO Student(
         Sfname,
         Smname,
         Slname,
