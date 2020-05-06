@@ -106,6 +106,21 @@ if( !$predicate && isset($_POST["submit"]) )
         </tbody>
     </table>
 
+    <!-- Candidate Pool -->
+    <h3>Candidate Pool</h3>
+    <?php
+
+        $sql = "SELECT Aapplication_id,AprofileImage,AprofileImageType FROM Application";
+        foreach ($conn->query($sql) as $row)
+        {
+            $img = base64_encode($row["AprofileImage"]);
+            $type = $row["AprofileImageType"];
+            //header("Content-type: " . $type);
+            $fullPicture = "data:image/png;base64,".$img;
+            echo "<img src='$fullPicture'/>";
+        }
+        ?>
+
 </div>
 
 

@@ -5,6 +5,7 @@
 DELIMITER //
 CREATE PROCEDURE create_application(
     IN studentID INT,
+    IN AstudentJobs VARCHAR(100),
     IN creditHours INT,
     IN numberOfHours INT,
     IN applicationPeriod VARCHAR(20),
@@ -18,6 +19,7 @@ CREATE PROCEDURE create_application(
 BEGIN
     INSERT INTO Application(
         Astudent_id,
+        AstudentJobs,
         Acredit_hours,
         Anumber_of_hours,
         Aapplication_period,
@@ -29,6 +31,7 @@ BEGIN
         AprofileImageType
     ) VALUES (
         studentID,
+        AstudentJobs,
         creditHours,
         numberOfHours,
         applicationPeriod,
@@ -49,6 +52,8 @@ DELIMITER ;
 
 DELIMITER //
 CREATE PROCEDURE async_submit_application(
+     IN studentID INT,
+    IN AstudentJobs VARCHAR(100),
     IN creditHours INT,
     IN numberOfHours INT,
     IN applicationPeriod VARCHAR(20),
@@ -57,7 +62,7 @@ CREATE PROCEDURE async_submit_application(
     IN transcript LONGBLOB,
     IN referenceLetter LONGBLOB,
     IN profilePicture LONGBLOB,
-    IN profilePictureType VARCHAR(25),
+    IN profilePictureType VARCHAR(25)
 )
     BEGIN
         DECLARE EXIT HANDLER FOR SQLEXCEPTION
@@ -66,28 +71,30 @@ CREATE PROCEDURE async_submit_application(
         END;
         START TRANSACTION;
         INSERT INTO Application(
-            Astudent_id,
-            Acredit_hours,
-            Anumber_of_hours,
-            Aapplication_period,
-            Acurrent_position,
-            Aresume,
-            Atranscript,
-            Areference_letter,
-            AprofileImage,
-            AprofileImageType
-        ) VALUES (
-            studentID,
-            creditHours,
-            numberOfHours,
-            applicationPeriod,
-            currentPosition,
-            resume,
-            transcript,
-            referenceLetter,
-            profilePicture,
-            profilePictureType
-        );
+        Astudent_id,
+        AstudentJobs,
+        Acredit_hours,
+        Anumber_of_hours,
+        Aapplication_period,
+        Acurrent_position,
+        Aresume,
+        Atranscript,
+        Areference_letter,
+        AprofileImage,
+        AprofileImageType
+    ) VALUES (
+        studentID,
+        AstudentJobs,
+        creditHours,
+        numberOfHours,
+        applicationPeriod,
+        currentPosition,
+        resume,
+        transcript,
+        referenceLetter,
+        profilePicture,
+        profilePictureType
+    );
         COMMIT;
     END //
 DELIMITER ;

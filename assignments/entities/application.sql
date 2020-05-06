@@ -1,5 +1,5 @@
 CREATE TABLE Application (
-    Aappliction_id INT NOT NULL AUTO_INCREMENT,
+    Aapplication_id INT NOT NULL AUTO_INCREMENT,
     Acredit_hours INT NOT NULL,
     Anumber_of_hours INT NOT NULL,
     Aapplication_period VARCHAR(20) DEFAULT 'FALL',
@@ -10,7 +10,8 @@ CREATE TABLE Application (
     AprofileImage LONGBLOB NOT NULL,
     AprofileImageType VARCHAR(25) NOT NULL,
     Astudent_id INT NOT NULL,
-    PRIMARY KEY (Aappliction_id)
+    AstudentJobs VARCHAR(100) NOT NULL,
+    PRIMARY KEY (Aapplication_id)
 )Engine=InnoDB;
 
 CREATE TABLE FILLED_OUT (
