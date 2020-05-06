@@ -12,7 +12,7 @@ CREATE VIEW TA AS SELECT * FROM student WHERE Sclassification LIKE "doctorate" o
 /*
 Get the most promising students in the applicant pool.
 */
-CREATE VIEW HonorStudents AS SELECT * FROM Student WHERE Smajor_gpa > 3.0 AND Sover_all_gpa > 3.0;
+CREATE VIEW HonorStudents AS SELECT * FROM student WHERE Smajor_gpa > 3.0 AND Sover_all_gpa > 3.0;
 
 /*
 The query aggregates all distinct residency statuses and calculates their GPAs. This will be useful to view the distribution of GPAs upon candidates. 

@@ -1,6 +1,7 @@
 <?php session_start(); ?>
 <?php
-    require "../../oop/databaseConnect.php";
+
+require "../../oop/databaseConnect.php";
     $database = new DatabaseConnector();
     $conn = $database -> connect();
 
@@ -10,8 +11,8 @@
 
 <head>
     <title>Admin</title>
-    <!--<link type="text/css" rel="stylesheet" href="../../css/style.css"/>-->
-
+    <link rel="stylesheet" href="../../css/utep.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 
 <body>
@@ -19,10 +20,10 @@
 <h1> Welcome Admin </h1>
 
 <!-- Logout -->
-<a href="../../student/login.php">Log out</a>
+<button type="button" class="btn btn-link"><a href="../../student/login.php">Log out</a></button>
 
 <!-- Generate Reports -->
-<a href="../../reports/index.php">Generate Reports</a>
+<button type="button" class="btn btn-link"><a href="../../reports/index.php">Generate Reports</a></button>
 
 
 <!-- Create a Job Role as a Admin -->
@@ -41,38 +42,38 @@ if( !$predicate && isset($_POST["submit"]) )
     if ($conn->query($sql)) { echo "submit";}
     else { echo "CRN Already Used"; }
 
-} elseif ($predicate)
-{
-    echo "Empty Values Not Accepted";
 }
 
 
 
 
 ?>
-<h4>Create Role</h4>
+<h3>Create Role</h3>
 <div class="createRole">
 <form action="adminPage.php" method="post">
 
     <label for="Student Title"></label>
-    <select name="jobTitle">
+    <select class="custom-select custom-select-sm" name="jobTitle">
         <option value="IA">Instructional Assistant (IA)</option>
         <option value="TA">Teacher Assistant (TA)</option>
         <option value="PL">Peer Leader (PL)</option>
     </select>
+
     <label for="UTEP Class Name"></label>
-    <input type="text" name="className" placeholder="UTEP Class Name"/>
+    <input type="text" class="form-control" name="className" placeholder="UTEP Class Name"/>
+
     <label for="Class CRN"></label>
-    <input type="text" name="classCRN" placeholder="UTEP Class CRN"/>
-    <input type="submit" name="submit" placeholder="Submit Job"/>
+    <input type="text" class="form-control" name="classCRN" placeholder="UTEP Class CRN"/>
+
+    <input type="submit" class="btn btn-primary mb-2" name="submit" placeholder="Submit Job"/>
 </form>
 </div>
 
 
 <!-- All Jobs in Database Table -->
-<h4>Show Jobs</h4>
+<h3>Show Jobs</h3>
 <div class="showTable">
-    <table>
+    <table class="table table-striped">
         <thead>
             <th>Job Title</th>
             <th>Class Name</th>
@@ -108,6 +109,9 @@ if( !$predicate && isset($_POST["submit"]) )
 
     <!-- Candidate Pool -->
     <h3>Candidate Pool</h3>
+    <table class="table table-striped">
+        <thead>Student Profile</thead>
+        <tr/>
     <?php
 
         $sql = "SELECT Aapplication_id,AprofileImage,AprofileImageType FROM Application";
@@ -117,7 +121,10 @@ if( !$predicate && isset($_POST["submit"]) )
             $type = $row["AprofileImageType"];
             //header("Content-type: " . $type);
             $fullPicture = "data:image/png;base64,".$img;
-            echo "<img src='$fullPicture'/>";
+            echo "<td>";
+            echo "<img width='350px' height='350px' class='img-thumbnail' src='$fullPicture'/>";
+            echo "</td>";
+            echo "<tr/>";
         }
         ?>
 

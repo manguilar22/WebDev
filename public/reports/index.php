@@ -5,6 +5,8 @@
 
 <head>
     <title>Reports</title>
+    <link rel="stylesheet" href="../css/utep.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
 </head>
 
 
@@ -24,7 +26,7 @@ $fetchOne = $conn->query($summaryOne)->fetch_array();
 $summaryTwo = "SELECT COUNT(*) AS 'total' FROM student";
 $fetchTwo = $conn->query($summaryTwo)->fetch_array();
 
-echo "<p>Registered students: ".$fetchTwo["total"]."</p>";
+echo "<p>Registered students in the system: ".$fetchTwo["total"]."</p>";
 echo "<h4> Averages </h4>";
 echo "<p>Major GPA of Candidates: ".$fetchOne["majorGPA"]."</p>";
 echo "<p>Overall GPA of Candidates: ".$fetchOne["overallGPA"]."</p>";
