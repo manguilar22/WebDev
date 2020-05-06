@@ -7,26 +7,24 @@ $conn = $databaseConnector->connect();
 
 $id = $_GET["id"];
 
-$getJobRole = "SELECT  * FROM role WHERE id LIKE '$id'";
+$getJobRole = "SELECT * FROM course WHERE Cid LIKE '$id'";
 
 $results = $conn->query($getJobRole)->fetch_array();
 
 $submit = $_POST["submit"];
 
-
-
-$jobTitle = isset($_POST["jobTitle"]) ? $_POST["jobTitle"] : $results["RjobTitle"];
-$className = isset($_POST["className"]) ? $_POST["className"] : $results["RclassName"];
-$classCRN = isset($_POST["classCRN"]) ? $_POST["classCRN"] : $results["RclassCRN"];
+$jobTitle = isset($_POST["jobTitle"]) ? $_POST["jobTitle"] : $results["CjobTitle"];
+$className = isset($_POST["className"]) ? $_POST["className"] : $results["CclassName"];
+$classCRN = isset($_POST["classCRN"]) ? $_POST["classCRN"] : $results["CclassCRN"];
 $jobID = isset($_GET["id"]) ? $_GET["id"] : $results["id"];
 
-$updateQuery = "UPDATE role SET  RjobTitle = '$jobTitle', RclassName = '$className' , RclassCRN = '$classCRN' WHERE id LIKE '$jobID'";
+$updateQuery = "UPDATE course SET  CjobTitle = '$jobTitle', CclassName = '$className' , CclassCRN = '$classCRN' WHERE Cid LIKE '$jobID'";
 
-if(isset($submit)) {
+if($_POST > 0) {
     $conn->query($updateQuery);
     $message = "Record Modified Successfully";
 }
-$result = $conn->query("SELECT * FROM role WHERE id LIKE '$id'");
+$result = $conn->query("SELECT * FROM course WHERE Cid LIKE '$id'");
 $row= mysqli_fetch_array($result);
 
 if (isset($submit)) {
@@ -49,8 +47,8 @@ if (isset($submit)) {
         <option value="PL">Peer Leader (PL)</option>
         <option value="TA">Teacher Assistant (TA)</option>
     </select>
-    <input type="text" name="className" value=<?php echo $results["RclassName"];?>/>
-    <input type="text" name="classCRN" value=<?php echo $results["RclassCRN"];?>/>
+    <input type="text" name="className" value=<?php echo $results["CclassName"];?>/>
+    <input type="text" name="classCRN" value=<?php echo $results["CclassCRN"];?>/>
     <input type="submit" name="submit" placeholder="submit"/>
 </form>
 

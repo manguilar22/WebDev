@@ -71,20 +71,7 @@ $gender     = $studentData["Sgender"];
     </table>
 </div>
 
-<!-- (Advanced) Information of student -->
 
-<h3>Upload Image</h3>
-<form action="" method="post">
-
-</form>
-
-<h3>Upload transcript</h3>
-
-<h3>Reference Letters</h3>
-<form action="" method="post">
-<input type="text" name="letter" placeholder="email"/>
-<input type="submit" name="letterSubmit" placeholder="submit"/>
-</form>
 
 
 </body>

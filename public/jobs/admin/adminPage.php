@@ -18,8 +18,11 @@
 
 <h1> Welcome Admin </h1>
 
+<!-- Logout -->
+<a href="../../student/login.php">Log out</a>
 
-<p><a href="../../reports/index.php">Generate Reports</a></p>
+<!-- Generate Reports -->
+<a href="../../reports/index.php">Generate Reports</a>
 
 
 <!-- Create a Job Role as a Admin -->
@@ -33,7 +36,7 @@ $predicate = empty($className) && empty($classCRN);
 
 if( !$predicate && isset($_POST["submit"]) )
 {
-    $sql = "CALL new_jobRole('$jobTitle','$className','$classCRN')";
+    $sql = "CALL new_course('$jobTitle','$className','$classCRN')";
 
     if ($conn->query($sql)) { echo "submit";}
     else { echo "CRN Already Used"; }
@@ -74,26 +77,26 @@ if( !$predicate && isset($_POST["submit"]) )
             <th>Job Title</th>
             <th>Class Name</th>
             <th>CRN</th>
-            <th>Delete</th>
+            <th>Edit</th>
         </thead>
         <tr/>
         <tbody>
         <?php
 
 
-        $sql = "SELECT * FROM role ORDER BY id DESC";
+        $sql = "SELECT * FROM course ORDER BY Cid DESC";
         foreach ($conn->query($sql)as $row)
         {
 
                     echo "<tr>";
-                    echo "<td>".$row["RjobTitle"]."</td>";
-                    echo "<td>".$row["RclassName"]."</td>";
-                    echo "<td>".$row["RclassCRN"]."</td>";
+                    echo "<td>".$row["CjobTitle"]."</td>";
+                    echo "<td>".$row["CclassName"]."</td>";
+                    echo "<td>".$row["CclassCRN"]."</td>";
                     // Create Update and Delete
                     echo '<td width=250>';
-                    echo '<a class="btn btn-success" href="update.php?id='.$row['id'].'">Update</a>';
+                    echo '<a class="btn btn-success" href="update.php?id='.$row['Cid'].'">Update</a>';
                     echo ' ';
-                    echo '<a class="btn btn-danger" href="delete.php?id='.$row['id'].'">Delete</a>';
+                    echo '<a class="btn btn-danger" href="delete.php?id='.$row['Cid'].'">Delete</a>';
                     echo '</td>';
                     echo "</tr>";
         }
@@ -104,6 +107,8 @@ if( !$predicate && isset($_POST["submit"]) )
     </table>
 
 </div>
+
+
 
 </body>
 </html>

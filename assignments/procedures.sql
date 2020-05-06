@@ -1,4 +1,99 @@
 /*
+    Create an application as a student
+ */
+
+DELIMITER //
+CREATE PROCEDURE create_application(
+    IN studentID INT,
+    IN creditHours INT,
+    IN numberOfHours INT,
+    IN applicationPeriod VARCHAR(20),
+    IN currentPosition VARCHAR(50),
+    IN resume LONGBLOB,
+    IN transcript LONGBLOB,
+    IN referenceLetter LONGBLOB,
+    IN profilePicture LONGBLOB,
+    IN profilePictureType VARCHAR(25)
+)
+BEGIN
+    INSERT INTO Application(
+        Astudent_id,
+        Acredit_hours,
+        Anumber_of_hours,
+        Aapplication_period,
+        Acurrent_position,
+        Aresume,
+        Atranscript,
+        Areference_letter,
+        AprofileImage,
+        AprofileImageType
+    ) VALUES (
+        studentID,
+        creditHours,
+        numberOfHours,
+        applicationPeriod,
+        currentPosition,
+        resume,
+        transcript,
+        referenceLetter,
+        profilePicture,
+        profilePictureType
+    );
+END //
+DELIMITER ;
+
+
+/*
+    Create an application as a student (async)
+ */
+
+DELIMITER //
+CREATE PROCEDURE async_submit_application(
+    IN creditHours INT,
+    IN numberOfHours INT,
+    IN applicationPeriod VARCHAR(20),
+    IN currentPosition VARCHAR(50),
+    IN resume LONGBLOB,
+    IN transcript LONGBLOB,
+    IN referenceLetter LONGBLOB,
+    IN profilePicture LONGBLOB,
+    IN profilePictureType VARCHAR(25),
+)
+    BEGIN
+        DECLARE EXIT HANDLER FOR SQLEXCEPTION
+        BEGIN
+            ROLLBACK;
+        END;
+        START TRANSACTION;
+        INSERT INTO Application(
+            Astudent_id,
+            Acredit_hours,
+            Anumber_of_hours,
+            Aapplication_period,
+            Acurrent_position,
+            Aresume,
+            Atranscript,
+            Areference_letter,
+            AprofileImage,
+            AprofileImageType
+        ) VALUES (
+            studentID,
+            creditHours,
+            numberOfHours,
+            applicationPeriod,
+            currentPosition,
+            resume,
+            transcript,
+            referenceLetter,
+            profilePicture,
+            profilePictureType
+        );
+        COMMIT;
+    END //
+DELIMITER ;
+
+
+/*
     Create New Jobs as a ADMIN
  */
 

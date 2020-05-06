@@ -3,7 +3,7 @@
     Job Roles that will be posted.
  */
 
-CREATE TABLE course (
+CREATE TABLE Course (
     Cid INT NOT NULL AUTO_INCREMENT,
     CjobTitle VARCHAR(2),
     CclassName VARCHAR(20),
@@ -11,7 +11,7 @@ CREATE TABLE course (
     PRIMARY KEY (Cid) /* Original Key: id */
  ) ENGINE=Innodb;
 
-INSERT INTO course (
+INSERT INTO Course (
 		CjobTitle,
 		CclassName,
 		CclassCRN
@@ -31,7 +31,7 @@ INSERT INTO course (
 		"26014"
 	);
 
- CREATE TABLE role (
+ CREATE TABLE Role (
     id INT NOT NULL AUTO_INCREMENT,
     RjobTitle VARCHAR(2),
     RclassName VARCHAR(20),
@@ -40,7 +40,7 @@ INSERT INTO course (
  ) ENGINE=Innodb;
 
 
-	INSERT INTO role (
+	INSERT INTO Role (
 		RjobTitle,
 		RclassName,
 		RclassCRN

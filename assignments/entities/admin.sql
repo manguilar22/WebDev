@@ -1,6 +1,6 @@
 
 
-CREATE TABLE administrator (
+CREATE TABLE Administrator (
     ADid INT NOT NULL AUTO_INCREMENT ,
     ADfname VARCHAR(20),
     ADmname VARCHAR(20),
@@ -10,7 +10,7 @@ CREATE TABLE administrator (
     PRIMARY KEY (ADid)
 ) ENGINE=InnoDB;
 
-INSERT INTO administrator (
+INSERT INTO Administrator (
                    ADfname,
                    ADmname,
                    ADlname,
@@ -25,7 +25,7 @@ INSERT INTO administrator (
 );
 
 
-CREATE TABLE coordinator (
+CREATE TABLE Coordinator (
     Cid INT NOT NULL AUTO_INCREMENT ,
     Cfname CHAR(20),
     Cmname CHAR(20),
@@ -36,7 +36,7 @@ CREATE TABLE coordinator (
 )ENGINE=InnoDB;
 
 
-INSERT INTO coordinator (
+INSERT INTO Coordinator (
     Cfname,
     Clname,
     Cemail,

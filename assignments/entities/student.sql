@@ -24,7 +24,7 @@ CREATE TABLE Student (
 
 
 
-INSERT INTO student(
+INSERT INTO Student(
 Sfname,
 Smname,
 Slname,

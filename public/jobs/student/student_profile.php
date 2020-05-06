@@ -1,8 +1,10 @@
 <?php session_start(); ?>
 <?php
 
-// Connect to Database
-require_once("../../oop/databaseConnect.php");
+include "../../css/design_template.html";
+
+// Connect to UTEP Database
+require_once "../../oop/databaseConnect.php";
 $database = new DatabaseConnector();
 $conn = $database -> connect();
 
@@ -66,20 +68,11 @@ $gender     = $studentData["Sgender"];
 				<th>Major GPA</th>
 				<td><?php echo $majorGPA ?></td>
 			</tr>
+
 		</table>
 	</div>
 
-<!-- Application Page -->
-<a href="studentApplicationPage.php">Application Page</a>
 
-<!-- Edit Profile -->
-<a href="manageProfile.php">Edit Profile</a>
-
-<!-- Application Status -->
-<a href="applicationStatus.php">Application Status</a>
-
-<!-- Logout -->
-<a href="../../student/login.php">Logout</a>
 
 </body>
 </html>

@@ -8,9 +8,9 @@ require_once "../../oop/databaseConnect.php";
 $database = new DatabaseConnector();
 $conn = $database->connect();
 
-$sql = "DELETE FROM role WHERE id LIKE '$id'";
+$sql = "DELETE FROM course WHERE Cid LIKE '$id'";
 
-$conn->query($sql); //->free();
+$conn->query($sql);
 
 ?>
 <!DOCTYPE html>
