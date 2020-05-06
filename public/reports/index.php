@@ -19,17 +19,17 @@
     $db = new DatabaseConnector();
     $conn = $db->connect();
 
-$summaryOne = "SELECT AVG(Smajor_gpa) AS 'majorGPA',AVG(Sover_all_gpa) AS 'overallGPA' FROM student";
+$summaryOne = "SELECT AVG(Smajor_gpa) AS 'majorGPA',AVG(Sover_all_gpa) AS 'overallGPA' FROM Student";
 
 $fetchOne = $conn->query($summaryOne)->fetch_array();
 
-$summaryTwo = "SELECT COUNT(*) AS 'total' FROM student";
+$summaryTwo = "SELECT COUNT(*) AS 'total' FROM Student";
 $fetchTwo = $conn->query($summaryTwo)->fetch_array();
 
 echo "<p>Registered students in the system: ".$fetchTwo["total"]."</p>";
 echo "<h4> Averages </h4>";
-echo "<p>Major GPA of Candidates: ".$fetchOne["majorGPA"]."</p>";
-echo "<p>Overall GPA of Candidates: ".$fetchOne["overallGPA"]."</p>";
+echo "<p>Major GPA of <b>All</b> Candidates: ".$fetchOne["majorGPA"]."</p>";
+echo "<p>Overall GPA of <b>All</b> Candidates: ".$fetchOne["overallGPA"]."</p>";
 
 
 ?>

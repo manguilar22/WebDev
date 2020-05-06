@@ -10,7 +10,7 @@ $conn = $database -> connect();
 
 $username = $_SESSION["user"];
 // This will return a row with all attributes associated with the email.
-$findStudentQuery = "SELECT * FROM student WHERE Semail LIKE '$username'";
+$findStudentQuery = "SELECT * FROM Student WHERE Semail LIKE '$username'";
 
 
 $studentData = $conn -> query($findStudentQuery) -> fetch_array();

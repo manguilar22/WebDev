@@ -8,7 +8,7 @@ $conn = $databaseConnector->connect();
 
 $username = $_SESSION["user"];
 
-$mysqlQuery = "SELECT * FROM student WHERE Semail LIKE '$username'";
+$mysqlQuery = "SELECT * FROM Student WHERE Semail LIKE '$username'";
 $results = $conn -> query($mysqlQuery) -> fetch_array();
 
 $classification = $results["Sclassification"];
@@ -19,12 +19,12 @@ switch ($classification)
 {
     case $classification==="undergraduate":
         // Undergraduate can only be Peer Leader or Instructional Assistant
-        $jobPostingQuery = "SELECT * FROM course WHERE CjobTitle LIKE 'IA' UNION SELECT * FROM course WHERE CjobTitle LIKE 'PL' ORDER BY Cid DESC";
+        $jobPostingQuery = "SELECT * FROM Course WHERE CjobTitle LIKE 'IA' UNION SELECT * FROM Course WHERE CjobTitle LIKE 'PL' ORDER BY Cid DESC";
         $jobPostings = $conn->query($jobPostingQuery);
         break;
 
     case $classification==="graduate" or $classification==="doctorate":
-        $jobPostingQuery = "SELECT * FROM course WHERE CjobTitle LIKE 'TA' ORDER BY Cid DESC";
+        $jobPostingQuery = "SELECT * FROM Course WHERE CjobTitle LIKE 'TA' ORDER BY Cid DESC";
         $jobPostings = $conn->query($jobPostingQuery);
         break;
 }
@@ -37,6 +37,9 @@ switch ($classification)
 
 <head>
     <title>Student</title>
+    <link href="../../css/utep.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
 </head>
 
 <body>
@@ -49,7 +52,7 @@ switch ($classification)
 
     <!-- Insert all data -->
     <form action="studentApplicationPage.php" method="post" enctype="multipart/form-data">
-    <table>
+        <table class="table table-striped">
         <th>Job ID</th>
         <th>Job Position</th>
         <th>Class Name</th>
@@ -87,9 +90,10 @@ switch ($classification)
     </table>
 
     <!-- (Advanced) Information of student -->
-    <label for="file">Upload Image</label>
-        <input type="file" name="file">
-        <?php
+        <div class="custom-file">
+            <label class="custom-file-label" for="file">Upload Image</label>
+            <input class="custom-file-input" type="file" name="file">
+            <?php
         if (count($_FILES) > 0) {
             if (is_uploaded_file($_FILES['file']['tmp_name'])) {
                 $imgData = addslashes(file_get_contents($_FILES['file']['tmp_name']));
@@ -114,13 +118,14 @@ switch ($classification)
             }
         }
         ?>
+        </div>
 
 
-    <!-- Upload Transcript -->
-    <label for="transcript">Upload transcript</label>
-        <input type="file" name="transcript"/>
-
-    <?php
+        <!-- Upload Transcript -->
+        <div class="custom-file">
+            <label class="custom-file-label" for="transcript">Upload transcript</label>
+            <input class="custom-file-input" type="file" name="transcript"/>
+            <?php
     if (count($_FILES) > 0) {
         if (is_uploaded_file($_FILES['file']['tmp_name'])) {
             $imgData = addslashes(file_get_contents($_FILES['file']['tmp_name']));
@@ -138,10 +143,12 @@ switch ($classification)
         }
     }
     ?>
+        </div>
 
-    <label for="resume">Upload Resume</label>
-        <input type="file" name="resume">
-        <?php
+        <div class="custom-file">
+            <label class="custom-file-label" for="resume">Upload Resume</label>
+            <input class="custom-file-input" type="file" name="resume">
+            <?php
         if (count($_FILES) > 0) {
             if (is_uploaded_file($_FILES['resume']['tmp_name'])) {
                 $imgData = addslashes(file_get_contents($_FILES['resume']['tmp_name']));
@@ -158,10 +165,12 @@ switch ($classification)
             }
         }
         ?>
+        </div>
 
-    <label for="letter">Reference Letters</label>
-        <input type="file" name="letter"/>
-    <?php
+        <div class="custom-file">
+        <label class="custom-file-label" for="letter">Reference Letters</label>
+            <input class="custom-file-input" type="file" name="letter"/>
+            <?php
     if (count($_FILES) > 0) {
         if (is_uploaded_file($_FILES['letter']['tmp_name'])) {
             $imgData = addslashes(file_get_contents($_FILES['letter']['tmp_name']));
@@ -178,29 +187,31 @@ switch ($classification)
         }
     }
     ?>
+        </div>
+
 
         <label for="creditHours">Credit Hours</label>
-        <input type="text" name="creditHours" placeholder="Ex. 88"/>
+        <input class="form-control form-control-sm" type="text" name="creditHours" placeholder="Ex. 88"/>
 
         <label for="numberOfHours">Number of Hours Per Semester of Application</label>
-        <input type="text" name="numberOfHours" placeholder="Ex. 12"/>
+        <input class="form-control form-control-sm" type="text" name="numberOfHours" placeholder="Ex. 12"/>
 
         <label for="applicationPeriod">Application Term To Consider</label>
-        <select name="applicationPeriod">
+        <select class="form-control form-control-sm" name="applicationPeriod">
             <option value="Fall" selected>Fall</option>
             <option value="Spring">Spring</option>
             <option value="Summer">Summer</option>
         </select>
 
         <label for="currentPosition">Current Position</label>
-        <select name="currentPosition">
+        <select select class="form-control form-control-sm" name="currentPosition">
             <option value="unemployed" selected>Unemployed</option>
             <option value="IA">Instructional Assistant</option>
             <option value="PL">Peer Leader</option>
         </select>
 
         <label for="submitApplication">Apply Now!</label>
-        <input type="submit" name="submitApplication" placeholder="Submit"/>
+        <input class="btn btn-primary mb-2" type="submit" name="submitApplication" placeholder="Submit"/>
         <?php
         $appliedJobs = [];
         if ( isset($_POST["submitApplication"]) )

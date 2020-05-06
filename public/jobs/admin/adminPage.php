@@ -37,10 +37,10 @@ $predicate = empty($className) && empty($classCRN);
 
 if( !$predicate && isset($_POST["submit"]) )
 {
-    $sql = "CALL new_course('$jobTitle','$className','$classCRN')";
 
+    $sql = "CALL new_course('$jobTitle','$className','$classCRN')";
+    echo $sql;
     if ($conn->query($sql)) { echo "submit";}
-    else { echo "CRN Already Used"; }
 
 }
 
@@ -72,7 +72,6 @@ if( !$predicate && isset($_POST["submit"]) )
 
 <!-- All Jobs in Database Table -->
 <h3>Show Jobs</h3>
-<div class="showTable">
     <table class="table table-striped">
         <thead>
             <th>Job Title</th>
@@ -85,7 +84,7 @@ if( !$predicate && isset($_POST["submit"]) )
         <?php
 
 
-        $sql = "SELECT * FROM course ORDER BY Cid DESC";
+        $sql = "SELECT * FROM Course ORDER BY Cid DESC";
         foreach ($conn->query($sql)as $row)
         {
 
@@ -128,7 +127,6 @@ if( !$predicate && isset($_POST["submit"]) )
         }
         ?>
 
-</div>
 
 
 

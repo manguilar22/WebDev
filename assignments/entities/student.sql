@@ -18,7 +18,7 @@ CREATE TABLE Student (
     Smajor_gpa DECIMAL(4,2),
     Sover_all_gpa DECIMAL(4,2),
     Spassword VARCHAR(100),
-    PRIMARY KEY (id)
+    PRIMARY KEY (Sid)
 ) ENGINE=InnoDB;
 
 
@@ -53,7 +53,6 @@ Spassword
  */
 
  INSERT INTO Student(
- Sid,
  Sfname,
  Smname,
  Slname,
@@ -68,13 +67,13 @@ Spassword
                         "user",
                         "N/A",
                         "user",
-                        "user",
+                        "user0",
                         "undergraduate",
                         "in-state",
                         "F",
                          3.33,
                          3.33,
-                         "user1"
+                         "user0"
                     ),
 		            (
 			            "user2",

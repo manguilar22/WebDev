@@ -8,7 +8,7 @@ require_once "../../oop/databaseConnect.php";
 $database = new DatabaseConnector();
 $conn = $database->connect();
 
-$sql = "DELETE FROM course WHERE Cid LIKE '$id'";
+$sql = "DELETE FROM Course WHERE Cid LIKE '$id'";
 
 $conn->query($sql);
 

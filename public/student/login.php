@@ -15,9 +15,9 @@ if (!empty($_POST)){
         $input_password = isset($_POST['password']) ? $_POST['password'] : " ";
 
         // MYSQL Queries
-        $findAdmin = "SELECT COUNT(*) FROM superusers WHERE Susername LIKE '$input_username' AND Spassword LIKE '$input_password' AND Sstatus LIKE 'ADMIN'";
-        $findCoordinator = "SELECT COUNT(*) FROM superusers WHERE Susername LIKE '$input_username' AND Spassword LIKE '$input_password' AND Sstatus LIKE 'COORDINATOR'";
-        $findUser = "SELECT COUNT(*) FROM student WHERE Semail LIKE '$input_username' AND Spassword LIKE '$input_password'";
+        $findAdmin = "SELECT COUNT(*) FROM SuperUsers WHERE Susername LIKE '$input_username' AND Spassword LIKE '$input_password' AND Sstatus LIKE 'ADMIN'";
+        $findCoordinator = "SELECT COUNT(*) FROM SuperUsers WHERE Susername LIKE '$input_username' AND Spassword LIKE '$input_password' AND Sstatus LIKE 'COORDINATOR'";
+        $findUser = "SELECT COUNT(*) FROM Student WHERE Semail LIKE '$input_username' AND Spassword LIKE '$input_password'";
 
         // Results
         $resultStudent = $conn -> query($findUser) -> fetch_array()[0];

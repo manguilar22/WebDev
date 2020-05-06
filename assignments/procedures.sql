@@ -112,7 +112,7 @@ CREATE PROCEDURE new_course(
     IN classCRN VARCHAR(10)
 )
 BEGIN
-INSERT INTO course(CjobTitle,CclassName,CclassCRN) VALUES (
+INSERT INTO Course(CjobTitle,CclassName,CclassCRN) VALUES (
             jobTitle,
             className,
             classCRN

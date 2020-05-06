@@ -7,7 +7,7 @@ $conn = $databaseConnector->connect();
 
 $id = $_GET["id"];
 
-$getJobRole = "SELECT * FROM course WHERE Cid LIKE '$id'";
+$getJobRole = "SELECT * FROM Course WHERE Cid LIKE '$id'";
 
 $results = $conn->query($getJobRole)->fetch_array();
 
@@ -18,13 +18,13 @@ $className = isset($_POST["className"]) ? $_POST["className"] : $results["Cclass
 $classCRN = isset($_POST["classCRN"]) ? $_POST["classCRN"] : $results["CclassCRN"];
 $jobID = isset($_GET["id"]) ? $_GET["id"] : $results["id"];
 
-$updateQuery = "UPDATE course SET  CjobTitle = '$jobTitle', CclassName = '$className' , CclassCRN = '$classCRN' WHERE Cid LIKE '$jobID'";
+$updateQuery = "UPDATE Course SET  CjobTitle = '$jobTitle', CclassName = '$className' , CclassCRN = '$classCRN' WHERE Cid LIKE '$jobID'";
 
 if($_POST > 0) {
     $conn->query($updateQuery);
     $message = "Record Modified Successfully";
 }
-$result = $conn->query("SELECT * FROM course WHERE Cid LIKE '$id'");
+$result = $conn->query("SELECT * FROM Course WHERE Cid LIKE '$id'");
 $row= mysqli_fetch_array($result);
 
 if (isset($submit)) {

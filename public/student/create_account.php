@@ -38,7 +38,7 @@ if(isset($submitButton))
             )";
 
     // Count Query
-    $testQuery = "SELECT COUNT(*) FROM student WHERE Semail LIKE '$uEmail'";
+    $testQuery = "SELECT COUNT(*) FROM Student WHERE Semail LIKE '$uEmail'";
     $count = $conn->query($testQuery)->fetch_array()[0];
 
     if ($count >= 1)
