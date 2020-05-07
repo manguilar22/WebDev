@@ -206,6 +206,7 @@ switch ($classification)
         <label for="currentPosition">Current Position</label>
         <select select class="form-control form-control-sm" name="currentPosition">
             <option value="unemployed" selected>Unemployed</option>
+            <option value="TA">Teacher Assistant</option>
             <option value="IA">Instructional Assistant</option>
             <option value="PL">Peer Leader</option>
         </select>
@@ -277,7 +278,9 @@ switch ($classification)
     );";
             $conn->query($createApplication);
             echo "Congrats, you did it";
-            echo "Total:\t".$totalJobs;
+
+            $newTable = "INSERT INTO VALUES ('$studentID',NOW())";
+
         }
         ?>
 

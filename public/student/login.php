@@ -11,8 +11,8 @@ if (!empty($_POST)){
     if (isset($_POST['Submit'])){
 
         // Client's Credentials
-        $input_username = isset($_POST['username']) ? $_POST['username'] : " ";
-        $input_password = isset($_POST['password']) ? $_POST['password'] : " ";
+        $input_username = isset($_POST['username']) ? $_POST['username'] :  NULL;
+        $input_password = isset($_POST['password']) ? $_POST['password'] :  NULL;
 
         // MYSQL Queries
         $findAdmin = "SELECT COUNT(*) FROM SuperUsers WHERE Susername LIKE '$input_username' AND Spassword LIKE '$input_password' AND Sstatus LIKE 'ADMIN'";

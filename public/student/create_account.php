@@ -16,8 +16,7 @@ $status = isset($_POST["status"]) ?  $_POST["status"] : "N/A";
 $gender = isset($_POST["gender"]) ? $_POST["gender"] : "N";
 $majorGPA = isset($_POST["majorGPA"]) ? $sanitizer->checkGPA($_POST["majorGPA"]) : 0.0;
 $overallGPA = isset($_POST["overallGPA"]) ? $sanitizer->checkGPA($_POST["overallGPA"]) : 0.0;
-$password = $sanitizer->cleanInput($_POST["password"]);
-//$password = password_hash($_POST["password"],PASSWORD_DEFAULT);
+$password = password_hash($sanitizer->cleanInput($_POST["password"]),PASSWORD_DEFAULT);
 
 $submitButton = $_POST["submit"];
 
