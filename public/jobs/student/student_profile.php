@@ -1,8 +1,6 @@
 <?php session_start(); ?>
 <?php
 
-include "../../css/design_template.html";
-
 // Connect to UTEP Database
 require_once "../../oop/databaseConnect.php";
 $database = new DatabaseConnector();

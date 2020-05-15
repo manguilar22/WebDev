@@ -55,9 +55,9 @@ if ($res=$conn->query("SELECT * FROM FullStatMatrix"))
 {
     while ($row=$res->fetch_assoc())
     {
-        array_push($t1,$row["average_major_GPA"]);
+            array_push($t1,$row["average_major_GPA"]);
             array_push($t2,$row["average_overall_GPA"]);
-                array_push($t3,$row["residency"]);
+            array_push($t3,$row["residency"]);
     }
 }
 
@@ -67,12 +67,8 @@ $data = $wolfram->WolframCloudCall(implode(",",$t1),implode(",",$t2),implode(","
 
 $imgData = "data:image/png;base64,".base64_encode($data);
 
-
-
-
-
-
 ?>
+
 <img src="<?php echo $imgData; ?>"/>
 <table class="table table-bordered">
     <thead class="thead-light">

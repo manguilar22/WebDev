@@ -18,7 +18,6 @@ CREATE PROCEDURE create_application(
 )
 BEGIN
     INSERT INTO Application(
-        INSERT INTO Application(
         Astudent_id,
         AstudentJobs,
         Acredit_hours,
@@ -165,7 +164,7 @@ BEGIN
         overallGPA,
         password
     );
-END; // 
+END //
 DELIMITER ;
 
 CALL new_student("first","","last","demo","undergraduate","in-state","M",3.33,2.22,"demo1");

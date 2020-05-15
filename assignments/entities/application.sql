@@ -15,23 +15,8 @@ CREATE TABLE Application (
     PRIMARY KEY (Aapplication_id)
 )Engine=InnoDB;
 
-
-
-CREATE TABLE Enrolled (
-ENcrn INT DEFAULT NULL ,
-ENsection VARCHAR(20) DEFAULT NULL ,
-ENname VARCHAR(20) DEFAULT NULL,
-ENsemester VARCHAR(20) DEFAULT NULL ,
-Sid INT DEFAULT NULL ,
-FOREIGN KEY(Sid) REFERENCES Student(Sid)
-);
-
-INSERT (Sid) VALUES ('$id');
-DROP TABLE Enrolled;
-
-
 CREATE TABLE FILLS_OUT (
     ApplicationID INT NOT NULL,
-    StudentID INT NOT NULL
+    StudentID INT NOT NULL,
     timestamp DATE
 )ENGINE=InnoDB;
