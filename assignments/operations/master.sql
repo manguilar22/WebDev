@@ -1,6 +1,6 @@
 /* Future Initialization Script */
 
-
+&&
 /*
     ALL entities
  */

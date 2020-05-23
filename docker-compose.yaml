@@ -20,7 +20,10 @@ services:
 
   mysqlDB:
     container_name: utep-mysql-db
-    image: mysql:5.7
+    image: mysql:s20am_team10
+    build:
+      context: .
+      dockerfile: assignments/
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_USER: user
