@@ -6,7 +6,6 @@ $databaseConnector = new DatabaseConnector();
 $conn = $databaseConnector->connect();
 $_SESSION['logged_in'] = false;
 
-
 if (!empty($_POST)){
     if (isset($_POST['Submit'])){
 
@@ -50,19 +49,15 @@ if (!empty($_POST)){
     }
 }
 ?>
-
 <!DOCTYPE HTML>
 <head>
     <title>Login</title>
-	<!--
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/> -->
-	<link rel="stylesheet" href="../css/login_style.css"/>
-
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
 </head>
 <body>
 
 <div class="box">
-	<img src="../css/img/login_logo.png" width="500px" height="361px">
+	<img src="../css/img/utep_logo.svg" width="500px" height="361px">
 	<div class="userInput">
 		<h1>USER LOG IN</h1>
 		<div>
@@ -72,7 +67,6 @@ if (!empty($_POST)){
 				<!-- <small class="form-text text-muted">use UTEP email</small> -->
 				<!-- <label>Password</label> -->
 				</br><input class="form-control" type="password" name="password" placeholder="password"> <br/>
-				<!-- TODO: -->
 				<button class="btn btn-primary" name="Submit" type="submit">Submit</button>
 			</form>
 		</div>

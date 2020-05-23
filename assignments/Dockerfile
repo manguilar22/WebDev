@@ -1,0 +1,10 @@
+FROM mysql:5.7
+
+ENV MYSQL_ROOT_PASSWORD password
+ENV MYSQL_DATABASE s20am_team10
+ENV MYSQL_USER user
+ENV MYSQL_PASSWORD password
+
+COPY FINAL_May23.sql /docker-entrypoint-initdb.d/FINAL_May23.sql
+
+EXPOSE 3306

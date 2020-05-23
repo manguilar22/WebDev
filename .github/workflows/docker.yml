@@ -16,8 +16,17 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Build & Push Image
+    - name: Build PHP
       run: |
+        cd public/
         docker login --username=manguilar22 --password=${{ secrets.DOCKER_PW }}
         docker image build -t manguilar22/php:utep -f Dockerfile .
         docker push manguilar22/php:utep
+
+    - uses: actions/checkout@v2
+    - name: Build MySQL database
+      run: |
+        cd assignments/
+        docker login --username=manguilar22 --password=${{ secrets.DOCKER_PW }}
+        docker image build -t manguilar22/mysql:s20am_team10 -f Dockerfile .
+        docker push manguilar22/mysql:s20am_team10

@@ -7,15 +7,13 @@ details.navigation ol {
 }
 
 body{
-	background-image: url("img/utep_bg.jpg");
-	background-repeat: no-repeat;
+    background: #041E42;
+    background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: cover;
-	margin:0;
+
 }
-h1{
-	font-family:RobotoCondensed-Bold;
-}
+
 
 .header {
   padding: 1px;
@@ -45,7 +43,6 @@ li a {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font-family:OpenSans-SemiBold;
   font-size:13px;
 }
 
@@ -64,12 +61,4 @@ li a.active {
 	height:192px;
 }
 
-@font-face{
-	font-family: RobotoCondensed-Bold;
-	src: url(fonts/RobotoCondensed-Bold.ttf);
-}
 
-@font-face{
-	font-family: OpenSans-SemiBold;
-	src: url(fonts/OpenSans-SemiBold.ttf);
-}

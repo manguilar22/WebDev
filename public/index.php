@@ -11,7 +11,7 @@
 <body>
 <!-- UTEP LOGO ON LEFT SIDE OF HEADER-->
 <div class="navigation-bar">
-		<img src="css/img/utep_logo.png">
+		<img src="css/img/utep_logo.svg">
 </div>
 <!-- TITLE IN HEADER -->
 <div class="header">
