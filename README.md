@@ -27,8 +27,21 @@ $ export MYSQL_PASSWORD=<PASSWORD>
 $ export MYSQL_DATABASE=<DATABASE NAME> 
 ```
 
-start php-cli
+#### Start php-cli
 
 ```bash
 $ php -t public/ -S 127.0.0.1:8080 
+```
+
+#### Docker Compose 
+
+```bash 
+docker-compose up -d 
+```
+
+#### Kubernetes deployments 
+
+``` bash
+kubectl apply -f k8s/mysql-deploy.yaml 
+kubectl apply -f k8s/php-deploy.yaml
 ```
