@@ -40,10 +40,11 @@ metadata:
   labels:
     app: utep-php
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: utep-php
   ports:
-    - port: 80
+    - type: TCP 
+      port: 80
       targetPort: 80
-      nodePort: 32000
+      
