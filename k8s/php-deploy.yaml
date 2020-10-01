@@ -44,7 +44,7 @@ spec:
   selector:
     app: utep-php
   ports:
-    - type: TCP 
+    - protocol: TCP 
       port: 80
       targetPort: 80
       
